@@ -13,12 +13,13 @@ import { WeatherProvider } from "./contexts/WeatherContext.tsx";
 
 const client = new ApolloClient({
   link: new HttpLink({
-    uri: "/graphql",
+    uri: "/linked/graphql",
     headers: {
-      Authorization: "CWB-31DC3369-D513-4BC6-8BF8-518F5F245D78",
+      Authorization: import.meta.env.VITE_CWA_KEY,
     },
   }),
   cache: new InMemoryCache(),
+  connectToDevTools: true,
 });
 
 createRoot(document.getElementById("root")!).render(

@@ -7,10 +7,10 @@ export default defineConfig({
   plugins: [react()],
   server: {
     proxy: {
-      '/graphql': {
+      '/linked/graphql': {
         target: 'https://opendata.cwa.gov.tw',
         changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/graphql/, '/linked/graphql'),
+        // rewrite: (path) => path.replace(/^\/graphql/, '/linked/graphql'),
       },
     },
   },

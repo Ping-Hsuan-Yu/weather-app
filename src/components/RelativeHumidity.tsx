@@ -3,7 +3,6 @@ import { useWeatherContext } from "../contexts/WeatherContext";
 export default function RelativeHumidity() {
   const { relativeHumidity } = useWeatherContext();
   return (
-    // <div className="bg-stone-50 dark:bg-slate-700 basis-1/3 py-1 px-2 rounded shadow">
     <div className="basis-1/3 py-1 px-2 glass">
       <div className="flex justify-between items-baseline">
         <span className="text-xs text-stone-500 dark:text-stone-200">相對濕度</span>

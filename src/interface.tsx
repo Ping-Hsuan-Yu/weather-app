@@ -39,6 +39,7 @@ export interface ForecastWeekday {
     ElementName: string;
     Time: MaxTemperatureTime[];
   };
+  ProbabilityOfPrecipitation: ProbabilityOfPrecipitation;
 }
 
 export interface ProbabilityOfPrecipitation {

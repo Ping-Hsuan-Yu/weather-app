@@ -10,38 +10,42 @@ export default function ShaderGradientBG() {
         position: "absolute",
         top: 0,
       }}
+      pointerEvents="none"
+      pixelDensity={2}
     >
       {isDarkMode ? (
         <ShaderGradient
-        control="props"
-        type="waterPlane"
-        shader="A"
-        uStrength={3.4}
-        uDensity={1.2}
-        grain="off"
-        reflection={0.1}
-        color1="#5929c1"
-        color2="#2b65bb"
-        color3="#0b19b8"
-        animate="on"
-        uSpeed={0.2}
-        cDistance={8}
+          control="props"
+          type="plane"
+          shader="A"
+          uStrength={2}
+          uDensity={1}
+          color1="#155e75"
+          color2="#075985"
+          color3="#d1d5db"
+          grain="on"
+          brightness={1.2}
+          animate="on"
+          uSpeed={0.3}
+          cDistance={4.5}
+          cAzimuthAngle={170}
+          cPolarAngle={50}
         />
       ) : (
         <ShaderGradient
-        control="props"
-        type="waterPlane"
-        shader="A"
-        uStrength={3.4}
-        uDensity={1.2}
-        grain="off"
-        reflection={0.1}
-        color1="#ffefea"
-        color2="#ffc187"
-        color3="#96cafe"
-        envPreset="lobby"
-        animate="on"
-        uSpeed={0.2}
+          control="props"
+          type="waterPlane"
+          shader="A"
+          uStrength={2}
+          uDensity={1}
+          color1="#7dd3fc"
+          color2="#22d3ee"
+          color3="#ecfeff"
+          grain="off"
+          brightness={1.2}
+          animate="on"
+          uSpeed={0.3}
+          cDistance={4.5}
         />
       )}
     </ShaderGradientCanvas>

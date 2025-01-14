@@ -23,8 +23,8 @@ export default function ForecastWeekday() {
   const weekdays = ["日", "一", "二", "三", "四", "五", "六"];
   const labels = useMemo(() => {
     const today = new Date();
-    const initialLabels = ["昨", "今", "明"];
-    for (let index = 2; index <= 5; index++) {
+    const initialLabels = ["今", "明"];
+    for (let index = 1; index <= 5; index++) {
       const futureDate = new Date();
       futureDate.setDate(today.getDate() + index);
       initialLabels.push(weekdays[futureDate.getDay()]);
@@ -44,7 +44,6 @@ export default function ForecastWeekday() {
   const { isDarkMode, weatherForecastData } = useWeatherContext();
   const maxTemperatureData =
     weatherForecastData.town.forecastWeekday.MaxTemperature.Time;
-  console.log(weatherForecastData.town.forecastWeekday.Weather.Time);
   const maxTemperature = Object.values(
     maxTemperatureData.reduce(
       (
@@ -106,25 +105,35 @@ export default function ForecastWeekday() {
     )
   );
 
+  const forecastWeekdayWeather =
+    weatherForecastData.town.forecastWeekday.Weather.Time;
+
+  const forecastWeekdayPOP =
+    weatherForecastData.town.forecastWeekday.ProbabilityOfPrecipitation.Time;
+
   return (
     <div className="glass mt-2 px-2 py-4">
       <div className="flex justify-between items-baseline px-4 mb-2">
         {labels.map((day, index) => (
           <div key={day} className="text-center">
             <div
-              className={
-                index == 0
-                  ? "text-stone-400"
-                  : "text-stone-900 dark:text-stone-50"
-              }
+              // className={
+              //   index == 0
+              //     ? "text-stone-400"
+              //     : "text-stone-900 dark:text-stone-50"
+              // }
+              className="text-stone-900 dark:text-stone-50"
             >
               {day}
             </div>
-            <div className={
-                index == 0
-                  ? "text-stone-400 text-sm"
-                  : "text-stone-500 dark:text-stone-200 text-sm"
-              }>
+            <div
+              // className={
+              //   index == 0
+              //     ? "text-stone-400"
+              //     : "text-stone-900 dark:text-stone-50"
+              // }
+              className="text-stone-900 dark:text-stone-50"
+            >
               {weekDate[index]}
               <span className="text-xs">日</span>
             </div>
@@ -132,8 +141,10 @@ export default function ForecastWeekday() {
         ))}
       </div>
       <div className="flex justify-between items-center px-4 mb-2">
-        <div className="w-6 h-6 flex justify-center items-center text-sm glass text-stone-400">早</div>
-        {weatherForecastData.town.forecastWeekday.Weather.Time.map(
+        <div className="w-6 h-6 flex justify-center items-center text-sm glass text-stone-400">
+          早
+        </div>
+        {forecastWeekdayWeather.map(
           (time, index) =>
             index !== 0 &&
             index % 2 === 0 && (
@@ -142,6 +153,7 @@ export default function ForecastWeekday() {
                 weather={time.Weather}
                 weatherCode={time.WeatherCode}
                 isDay
+                POP={forecastWeekdayPOP[index].ProbabilityOfPrecipitation}
               />
             )
         )}
@@ -206,8 +218,10 @@ export default function ForecastWeekday() {
         }}
       />
       <div className="flex justify-between items-center px-4 mt-3 mb-1">
-        <div className="w-6 h-6 flex justify-center items-center text-sm glass text-stone-400">晚</div>
-        {weatherForecastData.town.forecastWeekday.Weather.Time.map(
+        <div className="w-6 h-6 flex justify-center items-center text-sm glass text-stone-400">
+          晚
+        </div>
+        {forecastWeekdayWeather.map(
           (time, index) =>
             index !== 1 &&
             index % 2 === 1 && (
@@ -216,6 +230,7 @@ export default function ForecastWeekday() {
                 weather={time.Weather}
                 weatherCode={time.WeatherCode}
                 isDay={false}
+                POP={forecastWeekdayPOP[index].ProbabilityOfPrecipitation}
               />
             )
         )}

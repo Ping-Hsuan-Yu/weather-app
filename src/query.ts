@@ -8,7 +8,6 @@ export const GET_WEATHER_FORECAST = gql`
           ElementName
           Time {
             StartTime
-            # EndTime
             Weather
             WeatherCode
           }
@@ -17,7 +16,6 @@ export const GET_WEATHER_FORECAST = gql`
           ElementName
           Time {
             StartTime
-            # EndTime
             MinTemperature
           }
         }
@@ -25,8 +23,14 @@ export const GET_WEATHER_FORECAST = gql`
           ElementName
           Time {
             StartTime
-            # EndTime
             MaxTemperature
+          }
+        }
+        ProbabilityOfPrecipitation {
+          ElementName
+          Time {
+            StartTime
+            ProbabilityOfPrecipitation
           }
         }
       }

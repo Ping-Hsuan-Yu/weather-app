@@ -6,6 +6,8 @@ export default function Forecast24hr() {
   const { weatherForecastData, sunriseSunsetDate } = useWeatherContext();
   const temperatureData = weatherForecastData.town.forecast72hr.Temperature;
   const weatherData = weatherForecastData.town.forecast72hr.Weather;
+  const pOPData =
+    weatherForecastData.town.forecast72hr.ProbabilityOfPrecipitation;
   const current = new Date();
   // Filter temperature data
   const filteredTemperature = temperatureData.Time.filter((entry) => {
@@ -85,10 +87,16 @@ export default function Forecast24hr() {
       DateTime: temp.DateTime,
       Temperature: temp.Temperature,
     }),
+    POP: pOPData.Time.find((pop) => {
+      const startTime = new Date(pop.StartTime);
+      const endTime = new Date(pop.EndTime);
+      const target = new Date(temp.DateTime);
+      return startTime <= target && target <= endTime;
+    })?.ProbabilityOfPrecipitation,
   }));
 
   return (
-    <ScrollArea className="mt-2 glass py-2 h-28">
+    <ScrollArea className="mt-2 glass py-2 h-30">
       <table>
         <tbody>
           <tr className="text-center">
@@ -101,8 +109,12 @@ export default function Forecast24hr() {
                   <span className="text-sm">現在</span>
                 ) : Number.isNaN(Number(temp.Temperature)) ? (
                   `${temp.DateTime.getHours()}:${temp.DateTime.getMinutes()}`
+                ) : temp.DateTime.getHours() === 0 ? (
+                  <span className="text-sm border border-stone-400 rounded p-0.5">
+                    明日
+                  </span>
                 ) : (
-                  temp.DateTime.getHours() === 0 ? <span className="text-sm border border-stone-400 rounded p-0.5">明日</span> :temp.DateTime.getHours()
+                  temp.DateTime.getHours()
                 )}
               </td>
             ))}
@@ -116,6 +128,7 @@ export default function Forecast24hr() {
                   sunriseOrSunset={weather.Temperature}
                   isSunRiseSet={Number.isNaN(Number(weather.Temperature))}
                   isDay={weather.isDay}
+                  POP={weather.POP}
                 />
               </td>
             ))}
@@ -124,7 +137,9 @@ export default function Forecast24hr() {
             {withSunriseSunset.map((temp, idx) => (
               <td key={`${temp.Temperature}${idx}`}>
                 {Number.isNaN(Number(temp.Temperature)) ? (
-                  <span className="text-sm border border-stone-700 dark:border-stone-400 rounded p-0.5">{temp.Temperature}</span>
+                  <span className="text-sm border border-stone-700 dark:border-stone-400 rounded p-0.5">
+                    {temp.Temperature}
+                  </span>
                 ) : (
                   <span>
                     {temp.Temperature}

@@ -15,13 +15,13 @@ import {
   AqiQueryResult,
   ForecastQueryResult,
   TownDetails,
-  TownQueryResult
+  TownQueryResult,
 } from "../interface";
 import { GET_SUNRISESET, GET_WEATHER, GET_WEATHER_FORECAST } from "../query";
 
 type WeatherContextType = {
-  weatherData:AqiQueryResult
-  weatherForecastData:TownQueryResult
+  weatherData: AqiQueryResult;
+  weatherForecastData: TownQueryResult;
   town: TownDetails;
   currentTemp: number;
   todayMinTemp: string;
@@ -66,32 +66,40 @@ export const WeatherProvider = ({ children }: { children: ReactNode }) => {
 
   useEffect(getUserLocation, []);
 
-  
-  const { data: weatherData }: UseSuspenseQueryResult<AqiQueryResult> =
-   useSuspenseQuery(
-      GET_WEATHER,
-      userLocation
-        ? {
-            variables: {
-              lon: userLocation?.longitude,
-              lat: userLocation?.latitude,
-            },
-          }
-        : skipToken
-    ) as UseSuspenseQueryResult<AqiQueryResult>;
-
-  const { data: weatherForecastData }: UseSuspenseQueryResult<TownQueryResult> =
-    useSuspenseQuery(
-      GET_WEATHER_FORECAST,
-      userLocation
-        ? {
-            variables: {
-              lon: userLocation?.longitude,
-              lat: userLocation?.latitude,
-            },
-          }
-        : skipToken
-    ) as UseSuspenseQueryResult<TownQueryResult>;
+  const {
+    error: weatherDataError,
+    data: weatherData,
+  }: UseSuspenseQueryResult<AqiQueryResult> = useSuspenseQuery(
+    GET_WEATHER,
+    userLocation
+      ? {
+          variables: {
+            lon: userLocation?.longitude,
+            lat: userLocation?.latitude,
+          },
+        }
+      : skipToken
+  ) as UseSuspenseQueryResult<AqiQueryResult>;
+  if (weatherDataError) {
+    console.error("weatherDataError: ", weatherDataError);
+  }
+  const {
+    error: weatherForecastDataError,
+    data: weatherForecastData,
+  }: UseSuspenseQueryResult<TownQueryResult> = useSuspenseQuery(
+    GET_WEATHER_FORECAST,
+    userLocation
+      ? {
+          variables: {
+            lon: userLocation?.longitude,
+            lat: userLocation?.latitude,
+          },
+        }
+      : skipToken
+  ) as UseSuspenseQueryResult<TownQueryResult>;
+  if (weatherForecastDataError) {
+    console.error("weatherDataError: ", weatherForecastDataError);
+  }
 
   const town = useMemo(() => weatherData.aqi[0].town, [weatherData]);
 
@@ -101,6 +109,7 @@ export const WeatherProvider = ({ children }: { children: ReactNode }) => {
   const time = theDayAfterTomorrow.toISOString().split("T")[0];
 
   const {
+    error: sunriseSunsetDataError,
     data: sunriseSunsetData,
   }: UseSuspenseQueryResult<ForecastQueryResult> = useSuspenseQuery(
     GET_SUNRISESET,
@@ -113,6 +122,10 @@ export const WeatherProvider = ({ children }: { children: ReactNode }) => {
         }
       : skipToken
   ) as UseSuspenseQueryResult<ForecastQueryResult>;
+
+  if (sunriseSunsetDataError) {
+    console.error("sunriseSunsetDataError: ", sunriseSunsetDataError);
+  }
 
   const sunriseSunsetDate = useMemo(
     () => ({
@@ -138,7 +151,7 @@ export const WeatherProvider = ({ children }: { children: ReactNode }) => {
     // 檢查當前時間是否需要啟用 dark mode
     const checkDarkMode = () => {
       const now = new Date();
-      // const now = new Date("2025-01-13T18:00:00+08:00");
+      // const now = new Date("2025-01-14T18:00:00+08:00");
       const currentTime = now.getHours() * 60 + now.getMinutes(); // 當前分鐘數
 
       // 計算日出與日落的分鐘數
@@ -236,7 +249,6 @@ export const WeatherProvider = ({ children }: { children: ReactNode }) => {
       )[0].elementValue,
     [weatherData]
   );
-
 
   return (
     <WeatherContext.Provider
