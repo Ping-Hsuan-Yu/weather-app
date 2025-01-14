@@ -10,7 +10,6 @@ export default defineConfig({
       '/linked/graphql': {
         target: 'https://opendata.cwa.gov.tw',
         changeOrigin: true,
-        // rewrite: (path) => path.replace(/^\/graphql/, '/linked/graphql'),
       },
     },
   },

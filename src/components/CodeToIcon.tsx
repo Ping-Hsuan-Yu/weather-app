@@ -1,6 +1,5 @@
 import SunriseSvg from "../assets/svg-static/sunrise.svg";
 import SunsetSvg from "../assets/svg-static/sunset.svg";
-import { useWeatherContext } from "../contexts/WeatherContext";
 
 export default function CodeToIcon({
   weather,

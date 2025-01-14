@@ -11,13 +11,15 @@ import {
 } from "@apollo/client";
 import { WeatherProvider } from "./contexts/WeatherContext.tsx";
 
+const link = new HttpLink({
+  uri: `/linked/graphql`,
+  headers: {
+    Authorization: `${import.meta.env.VITE_CWA_KEY}`,
+  },
+});
+
 const client = new ApolloClient({
-  link: new HttpLink({
-    uri: "/linked/graphql",
-    headers: {
-      Authorization: import.meta.env.VITE_CWA_KEY,
-    },
-  }),
+  link: link,
   cache: new InMemoryCache(),
   connectToDevTools: true,
 });
@@ -25,9 +27,9 @@ const client = new ApolloClient({
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <ApolloProvider client={client}>
-        <WeatherProvider>
-          <App />
-        </WeatherProvider>
+      <WeatherProvider>
+        <App />
+      </WeatherProvider>
     </ApolloProvider>
   </StrictMode>
 );
