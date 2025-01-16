@@ -24,7 +24,7 @@ export default function ForecastWeekday() {
   const labels = useMemo(() => {
     const today = new Date();
     const initialLabels = ["今", "明"];
-    for (let index = 1; index <= 5; index++) {
+    for (let index = 2; index <= 7; index++) {
       const futureDate = new Date();
       futureDate.setDate(today.getDate() + index);
       initialLabels.push(weekdays[futureDate.getDay()]);
@@ -34,16 +34,16 @@ export default function ForecastWeekday() {
 
   const weekDate = useMemo(() => {
     const today = new Date();
-    return Array.from({ length: 7 }, (_, index) => {
+    return Array.from({ length: 8 }, (_, index) => {
       const futureDate = new Date();
       futureDate.setDate(today.getDate() + index);
       return futureDate.getDate();
     });
   }, []);
 
-  const { isDarkMode, weatherForecastData } = useWeatherContext();
+  const { isDarkMode, weatherData } = useWeatherContext();
   const maxTemperatureData =
-    weatherForecastData.town.forecastWeekday.MaxTemperature.Time;
+    weatherData.aqi[0].town.forecastWeekday.MaxTemperature.Time;
   const maxTemperature = Object.values(
     maxTemperatureData.reduce(
       (
@@ -74,7 +74,7 @@ export default function ForecastWeekday() {
   );
 
   const minTemperatureData =
-    weatherForecastData.town.forecastWeekday.MinTemperature.Time;
+    weatherData.aqi[0].town.forecastWeekday.MinTemperature.Time;
 
   const minTemperature = Object.values(
     minTemperatureData.reduce(
@@ -105,11 +105,13 @@ export default function ForecastWeekday() {
     )
   );
 
+  console.log(minTemperature);
+
   const forecastWeekdayWeather =
-    weatherForecastData.town.forecastWeekday.Weather.Time;
+    weatherData.aqi[0].town.forecastWeekday.Weather.Time;
 
   const forecastWeekdayPOP =
-    weatherForecastData.town.forecastWeekday.ProbabilityOfPrecipitation.Time;
+    weatherData.aqi[0].town.forecastWeekday.ProbabilityOfPrecipitation.Time;
 
   return (
     <div className="glass mt-2 px-2 py-4">
@@ -120,9 +122,9 @@ export default function ForecastWeekday() {
               // className={
               //   index == 0
               //     ? "text-stone-400"
-              //     : "text-stone-900 dark:text-stone-50"
+              //     : "text-primary"
               // }
-              className="text-stone-900 dark:text-stone-50"
+              className="text-primary"
             >
               {day}
             </div>
@@ -130,9 +132,9 @@ export default function ForecastWeekday() {
               // className={
               //   index == 0
               //     ? "text-stone-400"
-              //     : "text-stone-900 dark:text-stone-50"
+              //     : "text-primary"
               // }
-              className="text-stone-900 dark:text-stone-50"
+              className="text-primary"
             >
               {weekDate[index]}
               <span className="text-xs">日</span>
@@ -144,19 +146,26 @@ export default function ForecastWeekday() {
         <div className="w-6 h-6 flex justify-center items-center text-sm glass text-stone-400">
           早
         </div>
-        {forecastWeekdayWeather.map(
-          (time, index) =>
-            index !== 0 &&
-            index % 2 === 0 && (
+        {forecastWeekdayWeather
+          .filter(
+            (weather) =>
+              new Date(weather.StartTime).getHours() === 6 &&
+              new Date(weather.StartTime).getDate() !== new Date().getDate()
+          )
+          .map((time) => {
+            const pop = forecastWeekdayPOP.find(
+              (pop) => pop.StartTime === time.StartTime
+            );
+            return (
               <CodeToIcon
                 key={time.StartTime}
                 weather={time.Weather}
                 weatherCode={time.WeatherCode}
-                isDay
-                POP={forecastWeekdayPOP[index].ProbabilityOfPrecipitation}
+                isDay={false}
+                POP={pop?.ProbabilityOfPrecipitation}
               />
-            )
-        )}
+            );
+          })}
       </div>
       <Line
         options={{
@@ -221,19 +230,26 @@ export default function ForecastWeekday() {
         <div className="w-6 h-6 flex justify-center items-center text-sm glass text-stone-400">
           晚
         </div>
-        {forecastWeekdayWeather.map(
-          (time, index) =>
-            index !== 1 &&
-            index % 2 === 1 && (
+        {forecastWeekdayWeather
+          .filter(
+            (weather) =>
+              new Date(weather.StartTime).getHours() === 18 &&
+              new Date(weather.StartTime).getDate() !== new Date().getDate()
+          )
+          .map((time) => {
+            const pop = forecastWeekdayPOP.find(
+              (pop) => pop.StartTime === time.StartTime
+            );
+            return (
               <CodeToIcon
                 key={time.StartTime}
                 weather={time.Weather}
                 weatherCode={time.WeatherCode}
                 isDay={false}
-                POP={forecastWeekdayPOP[index].ProbabilityOfPrecipitation}
+                POP={pop?.ProbabilityOfPrecipitation}
               />
-            )
-        )}
+            );
+          })}
       </div>
     </div>
   );

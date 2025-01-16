@@ -1,89 +1,91 @@
 import { gql } from "@apollo/client";
 
-export const GET_WEATHER_FORECAST = gql`
-  query Town($lon: Float, $lat: Float) {
-    town(Longitude: $lon, Latitude: $lat) {
-      forecastWeekday {
-        Weather {
-          ElementName
-          Time {
-            StartTime
-            Weather
-            WeatherCode
-          }
-        }
-        MinTemperature {
-          ElementName
-          Time {
-            StartTime
-            MinTemperature
-          }
-        }
-        MaxTemperature {
-          ElementName
-          Time {
-            StartTime
-            MaxTemperature
-          }
-        }
-        ProbabilityOfPrecipitation {
-          ElementName
-          Time {
-            StartTime
-            ProbabilityOfPrecipitation
-          }
-        }
-      }
-      forecast72hr {
-        ProbabilityOfPrecipitation {
-          ElementName
-          Time {
-            StartTime
-            EndTime
-            ProbabilityOfPrecipitation
-          }
-        }
-        Temperature {
-          ElementName
-          Time(first: 24) {
-            DataTime
-            Temperature
-          }
-        }
-        ApparentTemperature {
-          ElementName
-          Time(first: 12) {
-            DataTime
-            ApparentTemperature
-          }
-        }
-        Weather {
-          ElementName
-          Time(first: 12) {
-            StartTime
-            EndTime
-            Weather
-            WeatherCode
-          }
-        }
-      }
-    }
-  }
-`;
-
 export const GET_WEATHER = gql`
   query Aqi($lon: Float, $lat: Float) {
     aqi(longitude: $lon, latitude: $lat) {
-      town {
-        ctyName
-        townName
-      }
       aqi
       status
       station {
+        latitude
+        longitude
         weatherElement {
           elementName
           elementValue
+        }
+      }
+      town {
+        ctyName
+        townName
+        villageName
+        forecast72hr {
+          ApparentTemperature {
+            Time(first: 12) {
+              ApparentTemperature
+            }
+          }
+          ProbabilityOfPrecipitation {
+            Time {
+              StartTime
+              EndTime
+              ProbabilityOfPrecipitation
+            }
+          }
+          Temperature {
+            Time(first: 24) {
+              DataTime
+              Temperature
+            }
+          }
+          Weather {
+            Time(first: 12) {
+              StartTime
+              EndTime
+              Weather
+              WeatherCode
+            }
+          }
+        }
+        forecastWeekday {
+          MinTemperature {
+            Time {
+              StartTime
+              MinTemperature
+            }
+          }
+          MaxTemperature {
+            Time {
+              StartTime
+              MaxTemperature
+            }
+          }
+          ProbabilityOfPrecipitation {
+            Time {
+              StartTime
+              ProbabilityOfPrecipitation
+            }
+          }
+          UVIndex {
+            Time(first: 1) {
+              StartTime
+              UVIndex
+              UVExposureLevel
+            }
+          }
+          Weather {
+            Time {
+              StartTime
+              Weather
+              WeatherCode
+            }
+          }
+        }
+        station {
+          latitude
+          longitude
+          weatherElement {
+            elementName
+            elementValue
+          }
         }
       }
     }

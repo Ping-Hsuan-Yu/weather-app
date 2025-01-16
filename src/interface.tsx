@@ -1,88 +1,93 @@
-export interface ApparentTemperatureTime {
-  DataTime: string;
-  ApparentTemperature: string;
-}
-
-export interface ApparentTemperature {
-  ElementName: string;
-  Time: ApparentTemperatureTime[];
-}
-
 export interface WeatherTime {
-  ElementName: string;
-  Time: {
-    StartTime: string;
-    Weather: string;
-    WeatherCode: string;
-  }[];
+  StartTime: string;
+  Weather: string;
+  WeatherCode: string;
+}
+
+export interface UVITime {
+  StartTime: string;
+  UVIndex: string;
+  UVExposureLevel: string;
+}
+
+export interface PoP12hTime {
+  StartTime: string;
+  ProbabilityOfPrecipitation: string;
 }
 
 export interface MinTemperatureTime {
   StartTime: string;
-  EndTime: string;
   MinTemperature: string;
 }
 
 export interface MaxTemperatureTime {
   StartTime: string;
-  EndTime: string;
   MaxTemperature: string;
 }
 
-export interface ForecastWeekday {
-  Weather: WeatherTime;
+export interface LocationWeekday {
   MinTemperature: {
-    ElementName: string;
     Time: MinTemperatureTime[];
   };
   MaxTemperature: {
-    ElementName: string;
     Time: MaxTemperatureTime[];
   };
-  ProbabilityOfPrecipitation: ProbabilityOfPrecipitation;
-}
-
-export interface ProbabilityOfPrecipitation {
-  ElementName: string;
-  Time: {
-    StartTime: string;
-    EndTime: string;
-    ProbabilityOfPrecipitation: string;
-  }[];
-}
-
-export interface Temperature {
-  ElementName: string;
-  Time: {
-    DataTime: string;
-    Temperature: string;
-  }[];
+  ProbabilityOfPrecipitation: {
+    Time: PoP12hTime[];
+  };
+  UVIndex: {
+    Time: UVITime[];
+  };
+  Weather: {
+    Time: WeatherTime[];
+  };
 }
 
 export interface Weather {
-  ElementName: string;
-  Time: {
-    StartTime: string;
-    EndTime: string;
-    Weather: string;
-    WeatherCode: string;
-  }[];
+  StartTime: string;
+  EndTime: string;
+  Weather: string;
+  WeatherCode: string;
 }
 
-export interface Forecast72hr {
-  ProbabilityOfPrecipitation: ProbabilityOfPrecipitation;
-  Temperature: Temperature;
-  Weather: Weather;
-  ApparentTemperature: ApparentTemperature;
+export interface Temperature {
+  DataTime: string;
+  Temperature: string;
 }
 
-export interface Town {
-  forecastWeekday: ForecastWeekday;
-  forecast72hr: Forecast72hr;
+export interface ProbabilityOfPrecipitation {
+  StartTime: string;
+  EndTime: string;
+  ProbabilityOfPrecipitation: string;
 }
 
-export interface TownQueryResult {
-  town: Town;
+export interface ApparentTemperature {
+  DataTime: string;
+  ApparentTemperature: string;
+}
+
+export interface Location72hr {
+  ApparentTemperature: {
+    Time: ApparentTemperature[];
+  };
+  ProbabilityOfPrecipitation: {
+    Time: ProbabilityOfPrecipitation[];
+  };
+  Temperature: {
+    Time: Temperature[];
+  };
+  Weather: {
+    Time: Weather[];
+  };
+}
+
+export interface TownVillageItem {
+  ctyName: string;
+  townName: string;
+  villageName:string;
+  forecast72hr: Location72hr;
+  forecastWeekday: LocationWeekday;
+  station: Station[];
 }
 
 export interface WeatherElement {
@@ -91,19 +96,16 @@ export interface WeatherElement {
 }
 
 export interface Station {
+  latitude:string;
+  longitude:string;
   weatherElement: WeatherElement[];
-}
-
-export interface TownDetails {
-  ctyName: string;
-  townName: string;
 }
 
 export interface AQI {
   aqi: string;
   status: string;
   station: Station;
-  town: TownDetails;
+  town: TownVillageItem;
 }
 
 export interface AqiQueryResult {
@@ -128,4 +130,10 @@ export interface Forecast {
 
 export interface ForecastQueryResult {
   forecast: Forecast;
+}
+
+export interface LocationName {
+  ctyName: string;
+  townName: string;
+  villageName:string;
 }

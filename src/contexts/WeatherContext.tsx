@@ -14,23 +14,16 @@ import {
 import {
   AqiQueryResult,
   ForecastQueryResult,
-  TownDetails,
-  TownQueryResult,
+  LocationName,
+  Station,
 } from "../interface";
-import { GET_SUNRISESET, GET_WEATHER, GET_WEATHER_FORECAST } from "../query";
+import { GET_SUNRISESET, GET_WEATHER } from "../query";
 
 type WeatherContextType = {
   weatherData: AqiQueryResult;
-  weatherForecastData: TownQueryResult;
-  town: TownDetails;
+  town: LocationName;
   currentTemp: number;
-  todayMinTemp: string;
-  todayMaxTemp: string;
-  apparentTemp: string;
-  apparentTempCompare: string;
-  aqiData: { data: string; status: string };
-  relativeHumidity: string;
-  sunriseSunsetData: ForecastQueryResult;
+  secondaryStation: Station | null;
   sunriseSunsetDate: {
     sunrise: Date;
     sunset: Date;
@@ -46,7 +39,7 @@ export const WeatherProvider = ({ children }: { children: ReactNode }) => {
   const [userLocation, setUserLocation] = useState<{
     latitude: number;
     longitude: number;
-  } | null>({ latitude: 24.169384, longitude: 120.658199 });
+  }>({ latitude: 24.169384, longitude: 120.658199 });
 
   const getUserLocation = () => {
     if (navigator.geolocation) {
@@ -66,6 +59,11 @@ export const WeatherProvider = ({ children }: { children: ReactNode }) => {
 
   useEffect(getUserLocation, []);
 
+  const now = new Date();
+  const theDayAfterTomorrow = new Date();
+  theDayAfterTomorrow.setDate(now.getDate() + 2);
+  const time = theDayAfterTomorrow.toISOString().split("T")[0];
+
   const {
     error: weatherDataError,
     data: weatherData,
@@ -76,6 +74,7 @@ export const WeatherProvider = ({ children }: { children: ReactNode }) => {
           variables: {
             lon: userLocation?.longitude,
             lat: userLocation?.latitude,
+            time: time,
           },
         }
       : skipToken
@@ -83,30 +82,13 @@ export const WeatherProvider = ({ children }: { children: ReactNode }) => {
   if (weatherDataError) {
     console.error("weatherDataError: ", weatherDataError);
   }
-  const {
-    error: weatherForecastDataError,
-    data: weatherForecastData,
-  }: UseSuspenseQueryResult<TownQueryResult> = useSuspenseQuery(
-    GET_WEATHER_FORECAST,
-    userLocation
-      ? {
-          variables: {
-            lon: userLocation?.longitude,
-            lat: userLocation?.latitude,
-          },
-        }
-      : skipToken
-  ) as UseSuspenseQueryResult<TownQueryResult>;
-  if (weatherForecastDataError) {
-    console.error("weatherDataError: ", weatherForecastDataError);
-  }
 
-  const town = useMemo(() => weatherData.aqi[0].town, [weatherData]);
+  const town = useMemo(() => {
+    const { ctyName, townName, villageName } = weatherData.aqi[0].town;
+    return { ctyName, townName, villageName };
+  }, [weatherData]);
 
-  const now = new Date();
-  const theDayAfterTomorrow = new Date();
-  theDayAfterTomorrow.setDate(now.getDate() + 2);
-  const time = theDayAfterTomorrow.toISOString().split("T")[0];
+  console.log(weatherData);
 
   const {
     error: sunriseSunsetDataError,
@@ -127,23 +109,27 @@ export const WeatherProvider = ({ children }: { children: ReactNode }) => {
     console.error("sunriseSunsetDataError: ", sunriseSunsetDataError);
   }
 
-  const sunriseSunsetDate = useMemo(
-    () => ({
+  console.log(sunriseSunsetData);
+
+
+  const sunriseSunset = sunriseSunsetData.forecast.Locations[0].sunRise;
+
+  const sunriseSunsetDate = useMemo(() => {
+    return {
       sunrise: new Date(
-        `${sunriseSunsetData.forecast.Locations[0].sunRise[0].Date}T${sunriseSunsetData.forecast.Locations[0].sunRise[0].SunRiseTime}:00`
+        `${sunriseSunset[0].Date}T${sunriseSunset[0].SunRiseTime}:00`
       ),
       sunset: new Date(
-        `${sunriseSunsetData.forecast.Locations[0].sunRise[0].Date}T${sunriseSunsetData.forecast.Locations[0].sunRise[0].SunSetTime}:00`
+        `${sunriseSunset[0].Date}T${sunriseSunset[0].SunSetTime}:00`
       ),
       tomorrowSunrise: new Date(
-        `${sunriseSunsetData.forecast.Locations[0].sunRise[1].Date}T${sunriseSunsetData.forecast.Locations[0].sunRise[1].SunRiseTime}:00`
+        `${sunriseSunset[1].Date}T${sunriseSunset[1].SunRiseTime}:00`
       ),
       tomorrowSunset: new Date(
-        `${sunriseSunsetData.forecast.Locations[0].sunRise[1].Date}T${sunriseSunsetData.forecast.Locations[0].sunRise[1].SunSetTime}:00`
+        `${sunriseSunset[1].Date}T${sunriseSunset[1].SunSetTime}:00`
       ),
-    }),
-    [sunriseSunsetData]
-  );
+    };
+  }, [sunriseSunsetData]);
 
   const [isDarkMode, setIsDarkMode] = useState(false);
 
@@ -156,13 +142,9 @@ export const WeatherProvider = ({ children }: { children: ReactNode }) => {
 
       // 計算日出與日落的分鐘數
       const [sunriseHour, sunriseMinute] =
-        sunriseSunsetData.forecast.Locations[0].sunRise[0].SunRiseTime.split(
-          ":"
-        ).map(Number);
+        sunriseSunset[0].SunRiseTime.split(":").map(Number);
       const [sunsetHour, sunsetMinute] =
-        sunriseSunsetData.forecast.Locations[0].sunRise[0].SunSetTime.split(
-          ":"
-        ).map(Number);
+        sunriseSunset[0].SunSetTime.split(":").map(Number);
       const sunriseTime = sunriseHour * 60 + sunriseMinute;
       const sunsetTime = sunsetHour * 60 + sunsetMinute;
 
@@ -186,84 +168,86 @@ export const WeatherProvider = ({ children }: { children: ReactNode }) => {
     return () => clearInterval(interval); // 清除 interval
   }, []);
 
-  const currentTemp = useMemo(
-    () =>
-      Math.round(
-        Number(
-          weatherData.aqi[0].station.weatherElement.filter(
-            (item) => item.elementName === "TEMP"
-          )[0].elementValue
-        )
-      ),
-    [weatherData]
-  );
+  function haversineDistance(
+    lat1: number,
+    lon1: number,
+    lat2: number,
+    lon2: number
+  ) {
+    const toRadians = (deg: number) => deg * (Math.PI / 180);
 
-  const todayMinTemp = useMemo(
-    () =>
-      weatherForecastData.town.forecastWeekday.MinTemperature.Time[0]
-        .MinTemperature,
-    [weatherForecastData]
-  );
+    const R = 6371; // 地球半徑 (公里)
+    const dLat = toRadians(lat2 - lat1);
+    const dLon = toRadians(lon2 - lon1);
 
-  const todayMaxTemp = useMemo(
-    () =>
-      weatherForecastData.town.forecastWeekday.MaxTemperature.Time[0]
-        .MaxTemperature,
-    [weatherForecastData]
-  );
+    const a =
+      Math.sin(dLat / 2) ** 2 +
+      Math.cos(toRadians(lat1)) *
+        Math.cos(toRadians(lat2)) *
+        Math.sin(dLon / 2) ** 2;
 
-  const apparentTemp = useMemo(() => {
-    const data = weatherForecastData.town.forecast72hr.ApparentTemperature.Time;
-    const now = new Date();
-    const closest = data.reduce((prev, current) => {
-      const prevDiff = Math.abs(
-        new Date(prev.DataTime).getTime() - now.getTime()
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    return R * c; // 兩點之間的距離 (公里)
+  }
+
+  function findClosestStation(
+    stations: Station[],
+    targetLat: number,
+    targetLon: number
+  ): Station | null {
+    let closestStation = null;
+    let minDistance = Infinity;
+
+    stations.forEach((station) => {
+      const stationLat = parseFloat(station.latitude);
+      const stationLon = parseFloat(station.longitude);
+      const distance = haversineDistance(
+        targetLat,
+        targetLon,
+        stationLat,
+        stationLon
       );
-      const currentDiff = Math.abs(
-        new Date(current.DataTime).getTime() - now.getTime()
-      );
-      return currentDiff < prevDiff ? current : prev;
+
+      if (distance < minDistance) {
+        minDistance = distance;
+        closestStation = station;
+      }
     });
-    return closest.ApparentTemperature;
-  }, [weatherForecastData]);
 
-  const apparentTempCompare = useMemo(() => {
-    if (Number(apparentTemp) > currentTemp) {
-      return "text-red-600";
-    } else if (Number(apparentTemp) < currentTemp) {
-      return "text-sky-600";
-    } else {
-      return "";
-    }
-  }, [apparentTemp, currentTemp]);
+    return closestStation;
+  }
 
-  const aqiData = useMemo(
-    () => ({ data: weatherData.aqi[0].aqi, status: weatherData.aqi[0].status }),
-    [weatherData]
+  const secondaryStation = findClosestStation(
+    weatherData.aqi[0].town.station,
+    userLocation.latitude,
+    userLocation.longitude
   );
 
-  const relativeHumidity = useMemo(
-    () =>
-      weatherData.aqi[0].station.weatherElement.filter(
-        (item) => item.elementName === "HUMD"
-      )[0].elementValue,
-    [weatherData]
-  );
+  const currentTemp = useMemo(() => {
+    const stationTemp = Math.round(
+      Number(
+        weatherData.aqi[0].station.weatherElement.filter(
+          (item) => item.elementName === "TEMP"
+        )[0].elementValue
+      )
+    );
+    const secStationTemp = Math.round(
+      Number(
+        secondaryStation?.weatherElement.filter(
+          (item) => item.elementName === "TEMP"
+        )[0].elementValue
+      )
+    );
+    return stationTemp === -99 ? Number(secStationTemp) : stationTemp;
+  }, [weatherData]);
 
   return (
     <WeatherContext.Provider
       value={{
         weatherData,
-        weatherForecastData,
         town,
         currentTemp,
-        todayMinTemp,
-        todayMaxTemp,
-        apparentTemp,
-        apparentTempCompare,
-        aqiData,
-        relativeHumidity,
-        sunriseSunsetData,
+        secondaryStation,
         sunriseSunsetDate,
         isDarkMode,
       }}

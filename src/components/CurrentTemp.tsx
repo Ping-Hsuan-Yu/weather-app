@@ -4,7 +4,7 @@ export default function CurrentTemp() {
   const { currentTemp } = useWeatherContext();
 
   return (
-    <div className="text-8xl font-thin tracking-tight dark:text-stone-50">
+    <div className="text-8xl font-thin tracking-tight text-primary">
       <span className="tracking-tight">
         {currentTemp.toString().slice(0, -1)}
       </span>

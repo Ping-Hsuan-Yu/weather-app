@@ -1,12 +1,23 @@
+import { useMemo } from "react";
 import { useWeatherContext } from "../contexts/WeatherContext";
 
 export default function RelativeHumidity() {
-  const { relativeHumidity } = useWeatherContext();
+  const { weatherData, secondaryStation } = useWeatherContext();
+  const relativeHumidity = useMemo(() => {
+    const hUMD = weatherData.aqi[0].station.weatherElement.filter(
+      (item) => item.elementName === "HUMD"
+    )[0].elementValue;
+    const secHUMD = secondaryStation?.weatherElement.filter(
+      (item) => item.elementName === "HUMD"
+    )[0].elementValue;
+    const result = hUMD === "-99.0" ? secHUMD : hUMD;
+    return result;
+  }, [weatherData]);
   return (
     <div className="basis-1/3 py-1 px-2 glass">
       <div className="flex justify-between items-baseline">
-        <span className="text-xs text-stone-500 dark:text-stone-200">相對濕度</span>
-        <span className="text-xl text-stone-900 dark:text-stone-50">
+        <span className="text-xs text-secondary">相對濕度</span>
+        <span className="text-xl text-primary">
           {Math.round(Number(relativeHumidity))}
           <span className="text-sm">%</span>
         </span>

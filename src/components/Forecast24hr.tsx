@@ -2,13 +2,16 @@ import { ScrollArea } from "@radix-ui/themes";
 import { useWeatherContext } from "../contexts/WeatherContext";
 import CodeToIcon from "./CodeToIcon";
 
+
+//TODO: 重新整理邏輯 先加入日出日落在進行資料篩選 溫度 天氣 降雨機率 合併？分散？
 export default function Forecast24hr() {
-  const { weatherForecastData, sunriseSunsetDate } = useWeatherContext();
-  const temperatureData = weatherForecastData.town.forecast72hr.Temperature;
-  const weatherData = weatherForecastData.town.forecast72hr.Weather;
+  const { weatherData, sunriseSunsetDate } = useWeatherContext();
+  const temperatureData = weatherData.aqi[0].town.forecast72hr.Temperature;
+  const weatherData72 = weatherData.aqi[0].town.forecast72hr.Weather;
   const pOPData =
-    weatherForecastData.town.forecast72hr.ProbabilityOfPrecipitation;
+    weatherData.aqi[0].town.forecast72hr.ProbabilityOfPrecipitation;
   const current = new Date();
+  
   // Filter temperature data
   const filteredTemperature = temperatureData.Time.filter((entry) => {
     const entryTime = new Date(entry.DataTime);
@@ -19,7 +22,7 @@ export default function Forecast24hr() {
   });
 
   // Filter weather data
-  const filteredWeather = weatherData.Time.filter((entry) => {
+  const filteredWeather = weatherData72.Time.filter((entry) => {
     const startTime = new Date(entry.StartTime);
     const endTime = new Date(entry.EndTime);
     const now = new Date(filteredTemperature[0].DataTime);
@@ -95,6 +98,8 @@ export default function Forecast24hr() {
     })?.ProbabilityOfPrecipitation,
   }));
 
+  console.log(withSunriseSunset)
+
   return (
     <ScrollArea className="mt-2 glass py-2 h-30">
       <table>
@@ -133,7 +138,7 @@ export default function Forecast24hr() {
               </td>
             ))}
           </tr>
-          <tr className="text-center text-stone-900 dark:text-stone-50">
+          <tr className="text-center text-primary">
             {withSunriseSunset.map((temp, idx) => (
               <td key={`${temp.Temperature}${idx}`}>
                 {Number.isNaN(Number(temp.Temperature)) ? (
