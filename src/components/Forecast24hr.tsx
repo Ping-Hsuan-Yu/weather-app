@@ -2,144 +2,122 @@ import { ScrollArea } from "@radix-ui/themes";
 import { useWeatherContext } from "../contexts/WeatherContext";
 import CodeToIcon from "./CodeToIcon";
 
-
-//TODO: 重新整理邏輯 先加入日出日落在進行資料篩選 溫度 天氣 降雨機率 合併？分散？
 export default function Forecast24hr() {
   const { weatherData, sunriseSunsetDate } = useWeatherContext();
-  const temperatureData = weatherData.aqi[0].town.forecast72hr.Temperature;
-  const weatherData72 = weatherData.aqi[0].town.forecast72hr.Weather;
+  const temperatureData = weatherData.aqi[0].town.forecast72hr.Temperature.Time;
+  const weatherData72 = weatherData.aqi[0].town.forecast72hr.Weather.Time;
   const pOPData =
-    weatherData.aqi[0].town.forecast72hr.ProbabilityOfPrecipitation;
-  const current = new Date();
-  
-  // Filter temperature data
-  const filteredTemperature = temperatureData.Time.filter((entry) => {
-    const entryTime = new Date(entry.DataTime);
-    entryTime.setMinutes(0, 0, 0);
-    const now = new Date(current.setMinutes(0, 0, 0));
-    const later = new Date(current.getTime() + 24 * 60 * 60 * 1000); // Add 24 hours
-    return entryTime >= now && entryTime <= later;
-  });
+    weatherData.aqi[0].town.forecast72hr.ProbabilityOfPrecipitation.Time;
 
-  // Filter weather data
-  const filteredWeather = weatherData72.Time.filter((entry) => {
-    const startTime = new Date(entry.StartTime);
-    const endTime = new Date(entry.EndTime);
-    const now = new Date(filteredTemperature[0].DataTime);
-    const later = new Date(
-      filteredTemperature[filteredTemperature.length - 1].DataTime
+  const concatData = temperatureData.map((temp) => {
+    const targetTime = new Date(temp.DataTime);
+    const targetWeather = weatherData72.find(
+      (weather) =>
+        new Date(weather.StartTime) <= targetTime &&
+        targetTime <= new Date(weather.EndTime)
     );
-
-    return (
-      (startTime >= now && startTime <= later) || // Check if StartTime is in range
-      (endTime >= now && endTime <= later) || // Check if EndTime is in range
-      (startTime <= now && endTime >= later) // Check if range overlaps
+    const targetPOP = pOPData.find(
+      (pop) =>
+        new Date(pop.StartTime) <= targetTime &&
+        targetTime <= new Date(pop.EndTime)
     );
-  });
-
-  const withSunriseSunset = filteredTemperature.map((item) => {
-    const dateTime = new Date(item.DataTime);
+    const { DataTime, Temperature } = temp;
+    const { Weather, WeatherCode } = targetWeather!;
+    const { ProbabilityOfPrecipitation } = targetPOP!;
     return {
-      DateTime: dateTime,
-      Temperature: item.Temperature,
+      DataTime: new Date(DataTime),
+      Temperature,
+      Weather,
+      WeatherCode,
+      ProbabilityOfPrecipitation,
       isDay:
-        (sunriseSunsetDate.sunrise <= dateTime &&
-          dateTime <= sunriseSunsetDate.sunset) ||
-        (sunriseSunsetDate.tomorrowSunrise <= dateTime &&
-          dateTime <= sunriseSunsetDate.tomorrowSunset),
+        (sunriseSunsetDate.sunrise <= targetTime &&
+          targetTime <= sunriseSunsetDate.sunset) ||
+        (sunriseSunsetDate.tomorrowSunrise <= targetTime &&
+          targetTime <= sunriseSunsetDate.tomorrowSunset),
     };
   });
 
-  withSunriseSunset.push({
-    DateTime: sunriseSunsetDate.sunrise,
+  concatData.push({
+    DataTime: sunriseSunsetDate.sunrise,
     Temperature: "日出",
     isDay: true,
+    Weather: "日出",
+    WeatherCode: "0",
+    ProbabilityOfPrecipitation: "",
   });
-  withSunriseSunset.push({
-    DateTime: sunriseSunsetDate.sunset,
+  concatData.push({
+    DataTime: sunriseSunsetDate.sunset,
     Temperature: "日落",
     isDay: false,
+    Weather: "日落",
+    WeatherCode: "0",
+    ProbabilityOfPrecipitation: "",
   });
-  withSunriseSunset.push({
-    DateTime: sunriseSunsetDate.tomorrowSunrise,
+  concatData.push({
+    DataTime: sunriseSunsetDate.tomorrowSunrise,
     Temperature: "日出",
     isDay: true,
+    Weather: "日出",
+    WeatherCode: "0",
+    ProbabilityOfPrecipitation: "",
   });
-  withSunriseSunset.push({
-    DateTime: sunriseSunsetDate.tomorrowSunset,
+  concatData.push({
+    DataTime: sunriseSunsetDate.tomorrowSunset,
     Temperature: "日落",
     isDay: false,
+    Weather: "日落",
+    WeatherCode: "0",
+    ProbabilityOfPrecipitation: "",
   });
 
-  withSunriseSunset.sort((a, b) => a.DateTime.getTime() - b.DateTime.getTime());
-  withSunriseSunset.pop();
-  withSunriseSunset.shift();
+  concatData.sort((a, b) => a.DataTime.getTime() - b.DataTime.getTime());
 
-  const weatherPerHour = withSunriseSunset.map((temp) => ({
-    ...temp,
-    ...(filteredWeather.find((weather) => {
-      const startTime = new Date(weather.StartTime);
-      const endTime = new Date(weather.EndTime);
-      const target = new Date(temp.DateTime);
-      return startTime <= target && target <= endTime;
-    }) ?? {
-      StartTime: "",
-      EndTime: "",
-      Weather: "",
-      WeatherCode: "",
-      DateTime: temp.DateTime,
-      Temperature: temp.Temperature,
-    }),
-    POP: pOPData.Time.find((pop) => {
-      const startTime = new Date(pop.StartTime);
-      const endTime = new Date(pop.EndTime);
-      const target = new Date(temp.DateTime);
-      return startTime <= target && target <= endTime;
-    })?.ProbabilityOfPrecipitation,
-  }));
-
-  console.log(withSunriseSunset)
+  const current = new Date();
+  const filterData = concatData.filter((item) => {
+    const now = new Date(current.setMinutes(0, 0, 0));
+    const later = new Date(current.getTime() + 24 * 60 * 60 * 1000); // Add 24 hours
+    return item.DataTime >= now && item.DataTime <= later;
+  });
 
   return (
     <ScrollArea className="mt-2 glass py-2 h-30">
       <table>
         <tbody>
           <tr className="text-center">
-            {withSunriseSunset.map((temp, idx) => (
+            {filterData.map((temp, idx) => (
               <td
-                key={`${temp.DateTime}${idx}`}
+                key={`${temp.DataTime}${idx}`}
                 className="text-stone-500 dark:text-stone-400"
               >
                 {idx == 0 && !Number.isNaN(Number(temp.Temperature)) ? (
                   <span className="text-sm">現在</span>
                 ) : Number.isNaN(Number(temp.Temperature)) ? (
-                  `${temp.DateTime.getHours()}:${temp.DateTime.getMinutes()}`
-                ) : temp.DateTime.getHours() === 0 ? (
+                  `${temp.DataTime.getHours()}:${temp.DataTime.getMinutes()}`
+                ) : temp.DataTime.getHours() === 0 ? (
                   <span className="text-sm border border-stone-400 rounded p-0.5">
                     明日
                   </span>
                 ) : (
-                  temp.DateTime.getHours()
+                  temp.DataTime.getHours()
                 )}
               </td>
             ))}
           </tr>
           <tr className="text-center">
-            {weatherPerHour.map((weather, idx) => (
+            {filterData.map((weather, idx) => (
               <td key={`${weather.Weather}${idx}`} className="px-4 py-2">
                 <CodeToIcon
                   weather={weather.Weather}
                   weatherCode={weather.WeatherCode}
-                  sunriseOrSunset={weather.Temperature}
-                  isSunRiseSet={Number.isNaN(Number(weather.Temperature))}
                   isDay={weather.isDay}
-                  POP={weather.POP}
+                  POP={weather.ProbabilityOfPrecipitation}
                 />
               </td>
             ))}
           </tr>
           <tr className="text-center text-primary">
-            {withSunriseSunset.map((temp, idx) => (
+            {filterData.map((temp, idx) => (
               <td key={`${temp.Temperature}${idx}`}>
                 {Number.isNaN(Number(temp.Temperature)) ? (
                   <span className="text-sm border border-stone-700 dark:border-stone-400 rounded p-0.5">

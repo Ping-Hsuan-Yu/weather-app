@@ -24,14 +24,14 @@ export const GET_WEATHER = gql`
             }
           }
           ProbabilityOfPrecipitation {
-            Time {
+            Time(first: 12) {
               StartTime
               EndTime
               ProbabilityOfPrecipitation
             }
           }
           Temperature {
-            Time(first: 24) {
+            Time(first: 30) {
               DataTime
               Temperature
             }

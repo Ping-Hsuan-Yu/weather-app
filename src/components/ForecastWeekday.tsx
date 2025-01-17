@@ -105,8 +105,6 @@ export default function ForecastWeekday() {
     )
   );
 
-  console.log(minTemperature);
-
   const forecastWeekdayWeather =
     weatherData.aqi[0].town.forecastWeekday.Weather.Time;
 
