@@ -13,9 +13,11 @@ import { WeatherProvider } from "./contexts/WeatherContext.tsx";
 
 const link = new HttpLink({
   uri: `/linked/graphql`,
+  // uri: `https://opendata.cwa.gov.tw/linked/graphql`,
   headers: {
     Authorization: `${import.meta.env.VITE_CWA_KEY}`,
   },
+  
 });
 
 const client = new ApolloClient({

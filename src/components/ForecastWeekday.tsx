@@ -24,7 +24,7 @@ export default function ForecastWeekday() {
   const labels = useMemo(() => {
     const today = new Date();
     const initialLabels = ["今", "明"];
-    for (let index = 2; index <= 7; index++) {
+    for (let index = 2; index <= 6; index++) {
       const futureDate = new Date();
       futureDate.setDate(today.getDate() + index);
       initialLabels.push(weekdays[futureDate.getDay()]);
@@ -42,6 +42,7 @@ export default function ForecastWeekday() {
   }, []);
 
   const { isDarkMode, weatherData } = useWeatherContext();
+
   const maxTemperatureData =
     weatherData.aqi[0].town.forecastWeekday.MaxTemperature.Time;
   const maxTemperature = Object.values(
@@ -141,14 +142,15 @@ export default function ForecastWeekday() {
         ))}
       </div>
       <div className="flex justify-between items-center px-4 mb-2">
-        <div className="w-6 h-6 flex justify-center items-center text-sm glass text-stone-400">
+        {/* <div className="w-6 h-6 flex justify-center items-center text-sm glass text-stone-400">
           早
-        </div>
+        </div> */}
         {forecastWeekdayWeather
           .filter(
             (weather) =>
-              new Date(weather.StartTime).getHours() === 6 &&
-              new Date(weather.StartTime).getDate() !== new Date().getDate()
+              new Date(weather.StartTime).getHours() === 6 ||
+              new Date(weather.StartTime).getHours() === 12
+            // new Date(weather.StartTime).getDate() !== new Date().getDate()
           )
           .map((time) => {
             const pop = forecastWeekdayPOP.find(
@@ -159,7 +161,7 @@ export default function ForecastWeekday() {
                 key={time.StartTime}
                 weather={time.Weather}
                 weatherCode={time.WeatherCode}
-                isDay={false}
+                isDay
                 POP={pop?.ProbabilityOfPrecipitation}
               />
             );
@@ -225,14 +227,14 @@ export default function ForecastWeekday() {
         }}
       />
       <div className="flex justify-between items-center px-4 mt-3 mb-1">
-        <div className="w-6 h-6 flex justify-center items-center text-sm glass text-stone-400">
+        {/* <div className="w-6 h-6 flex justify-center items-center text-sm glass text-stone-400">
           晚
-        </div>
+        </div> */}
         {forecastWeekdayWeather
           .filter(
             (weather) =>
-              new Date(weather.StartTime).getHours() === 18 &&
-              new Date(weather.StartTime).getDate() !== new Date().getDate()
+              new Date(weather.StartTime).getHours() === 18 
+              // new Date(weather.StartTime).getDate() !== new Date().getDate()
           )
           .map((time) => {
             const pop = forecastWeekdayPOP.find(

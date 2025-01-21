@@ -88,8 +88,6 @@ export const WeatherProvider = ({ children }: { children: ReactNode }) => {
     return { ctyName, townName, villageName };
   }, [weatherData]);
 
-  console.log(weatherData);
-
   const {
     error: sunriseSunsetDataError,
     data: sunriseSunsetData,
@@ -108,9 +106,6 @@ export const WeatherProvider = ({ children }: { children: ReactNode }) => {
   if (sunriseSunsetDataError) {
     console.error("sunriseSunsetDataError: ", sunriseSunsetDataError);
   }
-
-  console.log(sunriseSunsetData);
-
 
   const sunriseSunset = sunriseSunsetData.forecast.Locations[0].sunRise;
 

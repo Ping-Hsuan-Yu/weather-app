@@ -32,7 +32,7 @@ export default function CodeToIcon({
             title={weather}
             className="w-full"
           />
-          {isRain && (
+          {isRain && POP != "-" && (
             <div className="mt-1 text-xs font-semibold text-sky-600 dark:text-sky-500">
               {POP}%
             </div>
