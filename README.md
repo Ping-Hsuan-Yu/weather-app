@@ -1,50 +1,31 @@
-# React + TypeScript + Vite
+# 臺灣即時天氣預報
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
-
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+- 資料來源：[交通部中央氣象署](https://www.cwa.gov.tw/)
+- 顯示數據：
+  - 當前溫度
+  - 體感溫度
+  - 當日最高最低溫
+  - 未來24小時
+    - 氣溫預報
+    - 天氣狀況
+    - 降雨機率
+  - 未來一週
+    - 日夜溫度
+    - 日夜天氣狀況
+    - 降雨機率
+  - AQI
+  - 紫外線指數
+  - 相對濕度
+  - 日落日出時間
+- 功能：
+  - 現在位置
+  - 深色模式隨日落時間
+    
+### TODO
+  * [ ] 發佈到一個公開的地方(順便解決cors的問題)
+  * [ ] 其他地點氣象
+  * [ ] 根據天氣狀況改變背景
+    * [ ] 設計不同天氣狀況的背景
+  * [ ] 顯示昨天天氣供參
+    * [ ] 穿衣建議
+  * [ ] 整合曬衣/適合外出與否資訊
