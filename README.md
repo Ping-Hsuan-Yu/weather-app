@@ -20,6 +20,10 @@
 - 功能：
   - 現在位置
   - 深色模式隨日落時間
+
+## 現在長這樣 
+<img width="321" alt="image" src="https://github.com/user-attachments/assets/44460453-1be9-4d2d-a89d-45bb3a2d82a8" />
+
     
 ### TODO
   * [ ] 發佈到一個公開的地方(順便解決cors的問題)
