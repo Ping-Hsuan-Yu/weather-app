@@ -126,7 +126,7 @@ export const WeatherProvider = ({ children }: { children: ReactNode }) => {
         `${sunriseSunset[1].Date}T${sunriseSunset[1].SunSetTime}:00`
       ),
     };
-  }, [sunriseSunsetData]);
+  }, [sunriseSunset]);
 
   const [isDarkMode, setIsDarkMode] = useState(false);
 
@@ -163,7 +163,7 @@ export const WeatherProvider = ({ children }: { children: ReactNode }) => {
     // 每分鐘檢查一次
     const interval = setInterval(checkDarkMode, 60000); // 每分鐘檢查一次
     return () => clearInterval(interval); // 清除 interval
-  }, []);
+  }, [sunriseSunset]);
 
   function haversineDistance(
     lat1: number,
@@ -236,7 +236,7 @@ export const WeatherProvider = ({ children }: { children: ReactNode }) => {
       )
     );
     return stationTemp === -99 ? Number(secStationTemp) : stationTemp;
-  }, [weatherData]);
+  }, [weatherData, secondaryStation]);
 
   return (
     <WeatherContext.Provider

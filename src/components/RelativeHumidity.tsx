@@ -14,7 +14,7 @@ export default function RelativeHumidity() {
     )[0].elementValue;
     const result = hUMD === "-99.0" ? secHUMD : hUMD;
     return result;
-  }, [weatherData]);
+  }, [weatherData, secondaryStation]);
   return (
     <div className="basis-1/3 py-1 px-2 glass">
       <div className="flex justify-between items-baseline">

@@ -22,7 +22,7 @@ ChartJS.register(
 );
 
 export default function ForecastWeekday() {
-  const weekdays = ["日", "一", "二", "三", "四", "五", "六"];
+  const weekdays = useMemo(() => ["日", "一", "二", "三", "四", "五", "六"], []);
   const labels = useMemo(() => {
     const today = new Date();
     const initialLabels = ["今", "明"];
@@ -235,8 +235,8 @@ export default function ForecastWeekday() {
         {forecastWeekdayWeather
           .filter(
             (weather) =>
-              new Date(weather.StartTime).getHours() === 18 
-              // new Date(weather.StartTime).getDate() !== new Date().getDate()
+              new Date(weather.StartTime).getHours() === 18
+            // new Date(weather.StartTime).getDate() !== new Date().getDate()
           )
           .map((time) => {
             const pop = forecastWeekdayPOP.find(
