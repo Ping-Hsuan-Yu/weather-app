@@ -1,4 +1,6 @@
-import { useWeatherContext } from "../contexts/WeatherContext";
+"use client"
+
+import { useWeatherContext } from "@/context/WeatherContext";
 
 export default function CurrentTemp() {
   const { currentTemp } = useWeatherContext();

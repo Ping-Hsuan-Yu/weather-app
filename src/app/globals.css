@@ -1,0 +1,65 @@
+@import "@radix-ui/themes/styles.css";
+@import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: var(--font-barlow), var(--font-noto-sans-tc), sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
+.glass {
+  @apply bg-white dark:bg-slate-700 bg-clip-padding backdrop-filter backdrop-blur-xl bg-opacity-70 dark:bg-opacity-50 border border-neutral-300 border-opacity-30 shadow-xl rounded-xl;
+}
+
+.text-primary {
+  @apply text-stone-900 dark:text-stone-50;
+}
+
+.text-secondary {
+  @apply text-stone-500 dark:text-stone-200;
+}
+
+.skeleton {
+  animation: skeleton 1s infinite alternate-reverse !important;
+  border-radius: 4px;
+}
+
+@keyframes skeleton {
+  0% {
+    background-color: #e5e5e5;
+  }
+  100% {
+    background-color: #fafafa;
+  }
+}
+
+.rh-bar {
+  background: linear-gradient(90deg, #ffffff 0%, #38bdf8 100%);
+}
+
+.aqi-bar {
+  background: linear-gradient(
+    90deg,
+    #10b981 0%,
+    #fbbf24 17%,
+    #f97316 33%,
+    #ef4444 50%,
+    #8b5cf6 66%
+  );
+}
+
+.uvi-bar {
+  background: linear-gradient(
+    90deg,
+    #10b981 0%,
+    #10b981 20%,
+    #fbbf24 40%,
+    #f97316 65%,
+    #ef4444 90%,
+    #8b5cf6 100%
+  );
+}

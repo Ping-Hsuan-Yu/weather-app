@@ -1,5 +1,7 @@
+"use client"
+
 import { ScrollArea } from "@radix-ui/themes";
-import { useWeatherContext } from "../contexts/WeatherContext";
+import { useWeatherContext } from "@/context/WeatherContext";
 import CodeToIcon from "./CodeToIcon";
 
 export default function Forecast24hr() {

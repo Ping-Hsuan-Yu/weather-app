@@ -1,3 +1,5 @@
+"use client"
+
 import {
   CategoryScale,
   Chart as ChartJS,
@@ -8,7 +10,7 @@ import {
 import ChartDataLabels from "chartjs-plugin-datalabels";
 import { useMemo } from "react";
 import { Line } from "react-chartjs-2";
-import { useWeatherContext } from "../contexts/WeatherContext";
+import { useWeatherContext } from "@/context/WeatherContext";
 import CodeToIcon from "./CodeToIcon";
 
 ChartJS.register(
