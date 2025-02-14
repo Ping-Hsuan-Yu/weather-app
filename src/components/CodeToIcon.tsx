@@ -13,7 +13,7 @@ export default function CodeToIcon({
   weather: string;
   weatherCode: string;
   isDay: boolean;
-  POP?:string;
+  POP?: string;
 }) {
   const code = Number(weatherCode);
   const isRain = (8 <= code && code <= 23) || (29 <= code && code <= 42);
@@ -21,16 +21,15 @@ export default function CodeToIcon({
     <div className="w-6 h-10 flex justify-center flex-col">
       {code === 0 ? (
         weather === "日出" ? (
-          <Image src={SunriseSvg} alt="日出" className="w-full" />
+          <Image src={SunriseSvg} alt="日出" className="w-full" width={24} height={24} />
         ) : (
-          <Image src={SunsetSvg} alt="日落" className="w-full" />
+          <Image src={SunsetSvg} alt="日落" className="w-full" width={24} height={24} />
         )
       ) : (
         <>
           <Image
-            src={`https://www.cwa.gov.tw/V8/assets/img/weather_icons/weathers/svg_icon/${
-              isDay ? "day" : "night"
-            }/${weatherCode}.svg`}
+            src={`https://www.cwa.gov.tw/V8/assets/img/weather_icons/weathers/svg_icon/${isDay ? "day" : "night"
+              }/${weatherCode}.svg`}
             alt={weather}
             title={weather}
             className="w-full"

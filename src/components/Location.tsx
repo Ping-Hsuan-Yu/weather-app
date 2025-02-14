@@ -3,7 +3,7 @@
 import { useWeatherContext } from "@/context/WeatherContext";
 
 export default function Location() {
-  const { town } = useWeatherContext();
+  const { town, getUserPosition } = useWeatherContext();
 
   return (
     <div className="flex justify-center items-center text-tertiary gap-1">
@@ -11,6 +11,7 @@ export default function Location() {
       <div className="text-xs">
         {`${town.townName} ${town.villageName}`}
       </div>
+      <span className="material-symbols-outlined text-xl cursor-pointer" onClick={getUserPosition}>sync</span>
     </div>
   );
 }

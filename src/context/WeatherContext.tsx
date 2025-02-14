@@ -8,6 +8,7 @@ import {
 import {
   createContext,
   ReactNode,
+  useCallback,
   useContext,
   useEffect,
   useMemo,
@@ -33,33 +34,54 @@ type WeatherContextType = {
     tomorrowSunset: Date;
   };
   isDarkMode: boolean;
+  getUserPosition: () => void;
 };
 
 const WeatherContext = createContext<WeatherContextType | undefined>(undefined);
 
 export const WeatherProvider = ({ children }: { children: ReactNode }) => {
+
+  const saveLocationToLocalStorage = useCallback((latitude: number, longitude: number) => {
+    localStorage.setItem("userLocation", JSON.stringify({ latitude, longitude }));
+  }, [])
+
+  const getLocationFromLocalStorage = useCallback(() => {
+    const data = localStorage.getItem("userLocation");
+    return data ? JSON.parse(data) : null;
+  }, []);
+
+  const getUserPosition = useCallback(() => navigator.geolocation.getCurrentPosition(
+    (position) => {
+      const { latitude, longitude } = position.coords;
+      setUserLocation({ latitude, longitude });
+      saveLocationToLocalStorage(latitude, longitude);
+    },
+    (error) => {
+      console.error("Error getting user location:", error);
+    }
+  ), [])
+
   const [userLocation, setUserLocation] = useState<{
     latitude: number;
     longitude: number;
-  }>({ latitude: 24.169384, longitude: 120.658199 });
-
+  }>(getLocationFromLocalStorage() ?? { latitude: 24.169384, longitude: 120.658199 });
+ 
   const getUserLocation = () => {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          const { latitude, longitude } = position.coords;
-          setUserLocation({ latitude, longitude });
-        },
-        (error) => {
-          console.error("Error getting user location:", error);
-        }
-      );
+    if (getLocationFromLocalStorage()) {
+      setUserLocation(getLocationFromLocalStorage())
     } else {
-      console.error("Geolocation is not supported by this browser.");
+      if (navigator.geolocation) {
+        getUserPosition();
+      } else {
+        console.error("Geolocation is not supported by this browser.");
+      }
     }
   };
 
   useEffect(getUserLocation, []);
+
+  console.log(userLocation);
+
 
   const now = new Date();
   const theDayAfterTomorrow = new Date();
@@ -247,6 +269,7 @@ export const WeatherProvider = ({ children }: { children: ReactNode }) => {
         secondaryStation,
         sunriseSunsetDate,
         isDarkMode,
+        getUserPosition
       }}
     >
       {children}
