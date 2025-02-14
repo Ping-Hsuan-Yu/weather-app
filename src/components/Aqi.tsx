@@ -13,7 +13,7 @@ export default function Aqi() {
   return (
     <div className="glass basis-1/3 pt-1 pb-2 px-2">
       <div className="flex justify-between items-baseline">
-        <span className="text-secondary">AQI</span>
+        <span className="text-xs text-secondary">空氣品質指標</span>
         <span className="text-xl text-primary">{aqiData.data}</span>
       </div>
       <div className="w-full h-1 aqi-bar rounded-sm relative mt-1 mb-2">

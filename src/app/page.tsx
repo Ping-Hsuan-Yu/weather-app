@@ -13,13 +13,15 @@ import RelativeHumidity from "@/components/RelativeHumidity";
 import ShaderGradientBG from "@/components/ShaderGradientBG";
 import Uvi from "@/components/Uvi";
 import { WeatherProvider } from '@/context/WeatherContext';
+import { Suspense } from 'react';
 
 export default function HomePage() {
 
   return (
     <ApolloProvider client={client}>
       <WeatherProvider>
-        <div className="flex w-dvw h-dvh bg-slate-50 dark:bg-slate-800 relative">
+        <Suspense fallback={<h1>Meow</h1>}>
+        <div className="flex w-dvw min-h-dvh bg-slate-50 dark:bg-slate-800 relative">
           <ShaderGradientBG />
           <div className="m-auto w-full max-w-lg p-4 relative">
             <Location />
@@ -37,6 +39,7 @@ export default function HomePage() {
             <ForecastWeekday />
           </div>
         </div>
+        </Suspense>
       </WeatherProvider>
     </ApolloProvider>
   );

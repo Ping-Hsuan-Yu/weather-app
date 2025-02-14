@@ -31,8 +31,8 @@ export default function ApparentTemp() {
     }
   }, [apparentTemp, currentTemp]);
   return (
-    <div className="font-light text-secondary">
-      <span className="text-sm">體感溫度</span>
+    <div className="font-light">
+      <span className="text-sm text-tertiary">體感溫度</span>
       <span className={`text-2xl ms-1 ${apparentTempCompare}`}>
         {apparentTemp}
         <sup className="text-base">°</sup>
