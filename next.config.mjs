@@ -1,4 +1,12 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {};
-console.log("GraphQL API URL:", process.env.NEXT_PUBLIC_API_URL);
+const nextConfig = {
+    async rewrites() {
+        return [
+          {
+            source: '/api/graphql',
+            destination: 'https://opendata.cwa.gov.tw/linked/graphql',
+          },
+        ]
+      },
+};
 export default nextConfig;
