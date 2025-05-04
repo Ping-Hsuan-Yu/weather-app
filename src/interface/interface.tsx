@@ -84,23 +84,42 @@ export interface Location72hr {
 export interface TownVillageItem {
   ctyName: string;
   townName: string;
-  villageName:string;
+  villageName: string;
   forecast72hr: Location72hr;
   forecastWeekday: LocationWeekday;
   station: Station[];
 }
 
 export interface WeatherElement {
-  elementName: string;
-  elementValue: string;
+  Weather: string;
+  Now: {
+    Precipitation: string;
+  };
+  AirTemperature: string;
+  RelativeHumidity: string;
+  DailyExtreme: {
+    DailyHigh: {
+      TemperatureInfo: {
+        AirTemperature: string;
+      };
+    };
+    DailyLow: {
+      TemperatureInfo: {
+        AirTemperature: string;
+      };
+    };
+  };
 }
 
 export interface Station {
-  latitude:string;
-  longitude:string;
-  weatherElement: WeatherElement[];
+  GeoInfo: {
+    Coordinates: {
+      StationLatitude: string;
+      StationLongitude: string;
+    }[];
+  };
+  WeatherElement: WeatherElement;
 }
-
 export interface AQI {
   aqi: string;
   status: string;
@@ -135,5 +154,5 @@ export interface ForecastQueryResult {
 export interface LocationName {
   ctyName: string;
   townName: string;
-  villageName:string;
+  villageName: string;
 }

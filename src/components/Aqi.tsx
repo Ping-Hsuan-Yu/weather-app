@@ -13,8 +13,8 @@ export default function Aqi() {
   return (
     <div className="glass basis-1/3 pt-1 pb-2 px-2">
       <div className="flex justify-between items-baseline">
-        <span className="text-xs text-secondary">空氣品質指標</span>
-        <span className="text-xl text-primary">{aqiData.data}</span>
+        <span className="text-xs text-secondary">空氣品質</span>
+        <span className="text-xl text-primary">{aqiData.data === "" ? "x" : aqiData.data}</span>
       </div>
       <div className="w-full h-1 aqi-bar rounded-sm relative mt-1 mb-2">
         <div
@@ -22,7 +22,7 @@ export default function Aqi() {
           style={{ left: `${Number(aqiData.data) / 3}%` }}
         ></div>
       </div>
-      <div className="text-end text-xs text-secondary">{aqiData.status}</div>
+      <div className="text-end text-xs text-secondary">{aqiData.status === "" ? "x" : aqiData.status}</div>
     </div>
   );
 }

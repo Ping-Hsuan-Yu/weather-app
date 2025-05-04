@@ -20,7 +20,6 @@ export default function HomePage() {
   return (
     <ApolloProvider client={client}>
       <WeatherProvider>
-        <Suspense fallback={<h1>Meow</h1>}>
         <div className="flex w-dvw min-h-dvh bg-slate-50 dark:bg-slate-800 relative">
           <ShaderGradientBG />
           <div className="m-auto w-full max-w-lg p-4 relative">
@@ -39,7 +38,6 @@ export default function HomePage() {
             <ForecastWeekday />
           </div>
         </div>
-        </Suspense>
       </WeatherProvider>
     </ApolloProvider>
   );

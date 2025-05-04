@@ -6,11 +6,31 @@ export const GET_WEATHER = gql`
       aqi
       status
       station {
-        latitude
-        longitude
-        weatherElement {
-          elementName
-          elementValue
+        GeoInfo {
+          Coordinates {
+            StationLatitude
+            StationLongitude
+          }
+        }
+        WeatherElement {
+          Weather
+          Now {
+            Precipitation
+          }
+          AirTemperature
+          RelativeHumidity
+          DailyExtreme {
+            DailyHigh {
+              TemperatureInfo {
+                AirTemperature
+              }
+            }
+            DailyLow {
+              TemperatureInfo {
+                AirTemperature
+              }
+            }
+          }
         }
       }
       town {
@@ -80,11 +100,31 @@ export const GET_WEATHER = gql`
           }
         }
         station {
-          latitude
-          longitude
-          weatherElement {
-            elementName
-            elementValue
+          GeoInfo {
+            Coordinates {
+              StationLatitude
+              StationLongitude
+            }
+          }
+          WeatherElement {
+            Weather
+            Now {
+              Precipitation
+            }
+            AirTemperature
+            RelativeHumidity
+            DailyExtreme {
+              DailyHigh {
+                TemperatureInfo {
+                  AirTemperature
+                }
+              }
+              DailyLow {
+                TemperatureInfo {
+                  AirTemperature
+                }
+              }
+            }
           }
         }
       }

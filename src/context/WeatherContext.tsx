@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import {
   skipToken,
@@ -40,35 +40,49 @@ type WeatherContextType = {
 const WeatherContext = createContext<WeatherContextType | undefined>(undefined);
 
 export const WeatherProvider = ({ children }: { children: ReactNode }) => {
-
-  const saveLocationToLocalStorage = useCallback((latitude: number, longitude: number) => {
-    localStorage.setItem("userLocation", JSON.stringify({ latitude, longitude }));
-  }, [])
+  const saveLocationToLocalStorage = useCallback(
+    (latitude: number, longitude: number) => {
+      localStorage.setItem(
+        "userLocation",
+        JSON.stringify({ latitude, longitude })
+      );
+    },
+    []
+  );
 
   const getLocationFromLocalStorage = useCallback(() => {
     const data = localStorage.getItem("userLocation");
     return data ? JSON.parse(data) : null;
   }, []);
 
-  const getUserPosition = useCallback(() => navigator.geolocation.getCurrentPosition(
-    (position) => {
-      const { latitude, longitude } = position.coords;
-      setUserLocation({ latitude, longitude });
-      saveLocationToLocalStorage(latitude, longitude);
-    },
-    (error) => {
-      console.error("Error getting user location:", error);
-    }
-  ), [])
+  const getUserPosition = useCallback(
+    () =>
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const { latitude, longitude } = position.coords;
+          setUserLocation({ latitude, longitude });
+          saveLocationToLocalStorage(latitude, longitude);
+        },
+        (error) => {
+          console.error("Error getting user location:", error);
+        }
+      ),
+    []
+  );
 
   const [userLocation, setUserLocation] = useState<{
     latitude: number;
     longitude: number;
-  }>(getLocationFromLocalStorage() ?? { latitude: 24.169384, longitude: 120.658199 });
- 
+  }>(
+    getLocationFromLocalStorage() ?? {
+      latitude: 24.169384,
+      longitude: 120.658199,
+    }
+  );
+
   const getUserLocation = () => {
     if (getLocationFromLocalStorage()) {
-      setUserLocation(getLocationFromLocalStorage())
+      setUserLocation(getLocationFromLocalStorage());
     } else {
       if (navigator.geolocation) {
         getUserPosition();
@@ -79,9 +93,6 @@ export const WeatherProvider = ({ children }: { children: ReactNode }) => {
   };
 
   useEffect(getUserLocation, []);
-
-  console.log(userLocation);
-
 
   const now = new Date();
   const theDayAfterTomorrow = new Date();
@@ -95,17 +106,19 @@ export const WeatherProvider = ({ children }: { children: ReactNode }) => {
     GET_WEATHER,
     userLocation
       ? {
-        variables: {
-          lon: userLocation?.longitude,
-          lat: userLocation?.latitude,
-          time: time,
-        },
-      }
+          variables: {
+            lon: userLocation?.longitude,
+            lat: userLocation?.latitude,
+            time: time,
+          },
+        }
       : skipToken
   ) as UseSuspenseQueryResult<AqiQueryResult>;
   if (weatherDataError) {
     console.error("weatherDataError: ", weatherDataError);
   }
+
+  console.log(weatherData);
 
   const town = useMemo(() => {
     const { ctyName, townName, villageName } = weatherData.aqi[0].town;
@@ -119,11 +132,11 @@ export const WeatherProvider = ({ children }: { children: ReactNode }) => {
     GET_SUNRISESET,
     town
       ? {
-        variables: {
-          ctyName: town.ctyName,
-          time: time,
-        },
-      }
+          variables: {
+            ctyName: town.ctyName,
+            time: time,
+          },
+        }
       : skipToken
   ) as UseSuspenseQueryResult<ForecastQueryResult>;
 
@@ -202,8 +215,8 @@ export const WeatherProvider = ({ children }: { children: ReactNode }) => {
     const a =
       Math.sin(dLat / 2) ** 2 +
       Math.cos(toRadians(lat1)) *
-      Math.cos(toRadians(lat2)) *
-      Math.sin(dLon / 2) ** 2;
+        Math.cos(toRadians(lat2)) *
+        Math.sin(dLon / 2) ** 2;
 
     const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
     return R * c; // 兩點之間的距離 (公里)
@@ -218,8 +231,8 @@ export const WeatherProvider = ({ children }: { children: ReactNode }) => {
     let minDistance = Infinity;
 
     stations.forEach((station) => {
-      const stationLat = parseFloat(station.latitude);
-      const stationLon = parseFloat(station.longitude);
+      const stationLat = parseFloat(station.GeoInfo.Coordinates[1].StationLatitude);
+      const stationLon = parseFloat(station.GeoInfo.Coordinates[1].StationLongitude);
       const distance = haversineDistance(
         targetLat,
         targetLon,
@@ -244,17 +257,11 @@ export const WeatherProvider = ({ children }: { children: ReactNode }) => {
 
   const currentTemp = useMemo(() => {
     const stationTemp = Math.round(
-      Number(
-        weatherData.aqi[0].station.weatherElement.filter(
-          (item) => item.elementName === "TEMP"
-        )[0].elementValue
-      )
+      Number(weatherData.aqi[0].station.WeatherElement.AirTemperature)
     );
     const secStationTemp = Math.round(
       Number(
-        secondaryStation?.weatherElement.filter(
-          (item) => item.elementName === "TEMP"
-        )[0].elementValue
+        secondaryStation?.WeatherElement.AirTemperature
       )
     );
     return stationTemp === -99 ? Number(secStationTemp) : stationTemp;
@@ -269,7 +276,7 @@ export const WeatherProvider = ({ children }: { children: ReactNode }) => {
         secondaryStation,
         sunriseSunsetDate,
         isDarkMode,
-        getUserPosition
+        getUserPosition,
       }}
     >
       {children}

@@ -32,7 +32,9 @@
     * [x] ~~轉換框架 Vite -> Next 建立Proxy 解決cors的問題~~
   * [x] 儲存使用者地理位置
   * [x] 地理位置刷新按鈕
+  * [x] -99 狀態處理(溫度濕度)
   * [ ] Loading skeleton
+  * [ ] metaData 設定 (apple-icon/favicon/manifest.json)
   * [ ] 自行選擇其他地點氣象
   * [ ] 根據天氣狀況改變背景
     * [ ] 設計不同天氣狀況的背景

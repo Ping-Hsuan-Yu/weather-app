@@ -6,12 +6,8 @@ import { useWeatherContext } from "@/context/WeatherContext";
 export default function RelativeHumidity() {
   const { weatherData, secondaryStation } = useWeatherContext();
   const relativeHumidity = useMemo(() => {
-    const hUMD = weatherData.aqi[0].station.weatherElement.filter(
-      (item) => item.elementName === "HUMD"
-    )[0].elementValue;
-    const secHUMD = secondaryStation?.weatherElement.filter(
-      (item) => item.elementName === "HUMD"
-    )[0].elementValue;
+    const hUMD = weatherData.aqi[0].station.WeatherElement.RelativeHumidity
+    const secHUMD = secondaryStation?.WeatherElement.RelativeHumidity
     const result = hUMD === "-99.0" ? secHUMD : hUMD;
     return result;
   }, [weatherData, secondaryStation]);
