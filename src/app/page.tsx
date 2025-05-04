@@ -1,7 +1,5 @@
 'use client';
 
-import client from '@/lib/apolloClient';
-import { ApolloProvider } from '@apollo/client';
 import ApparentTemp from "@/components/ApparentTemp";
 import Aqi from "@/components/Aqi";
 import CurrentTemp from "@/components/CurrentTemp";
@@ -13,7 +11,8 @@ import RelativeHumidity from "@/components/RelativeHumidity";
 import ShaderGradientBG from "@/components/ShaderGradientBG";
 import Uvi from "@/components/Uvi";
 import { WeatherProvider } from '@/context/WeatherContext';
-import { Suspense } from 'react';
+import client from '@/lib/apolloClient';
+import { ApolloProvider } from '@apollo/client';
 
 export default function HomePage() {
 
