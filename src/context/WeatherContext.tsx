@@ -40,8 +40,10 @@ type WeatherContextType = {
 const WeatherContext = createContext<WeatherContextType | undefined>(undefined);
 
 export const WeatherProvider = ({ children }: { children: ReactNode }) => {
+  
   const saveLocationToLocalStorage = useCallback(
     (latitude: number, longitude: number) => {
+      if (typeof window === "undefined") return;
       localStorage.setItem(
         "userLocation",
         JSON.stringify({ latitude, longitude })
@@ -51,6 +53,7 @@ export const WeatherProvider = ({ children }: { children: ReactNode }) => {
   );
 
   const getLocationFromLocalStorage = useCallback(() => {
+    if (typeof window === "undefined") return null;
     const data = localStorage.getItem("userLocation");
     return data ? JSON.parse(data) : null;
   }, []);
@@ -231,8 +234,12 @@ export const WeatherProvider = ({ children }: { children: ReactNode }) => {
     let minDistance = Infinity;
 
     stations.forEach((station) => {
-      const stationLat = parseFloat(station.GeoInfo.Coordinates[1].StationLatitude);
-      const stationLon = parseFloat(station.GeoInfo.Coordinates[1].StationLongitude);
+      const stationLat = parseFloat(
+        station.GeoInfo.Coordinates[1].StationLatitude
+      );
+      const stationLon = parseFloat(
+        station.GeoInfo.Coordinates[1].StationLongitude
+      );
       const distance = haversineDistance(
         targetLat,
         targetLon,
@@ -260,9 +267,7 @@ export const WeatherProvider = ({ children }: { children: ReactNode }) => {
       Number(weatherData.aqi[0].station.WeatherElement.AirTemperature)
     );
     const secStationTemp = Math.round(
-      Number(
-        secondaryStation?.WeatherElement.AirTemperature
-      )
+      Number(secondaryStation?.WeatherElement.AirTemperature)
     );
     return stationTemp === -99 ? Number(secStationTemp) : stationTemp;
   }, [weatherData, secondaryStation]);
