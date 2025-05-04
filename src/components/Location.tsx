@@ -1,7 +1,6 @@
 "use client"
 
 import { useWeatherContext } from "@/context/WeatherContext";
-import { Suspense } from "react";
 
 export default function Location() {
   const { town, getUserPosition } = useWeatherContext();
