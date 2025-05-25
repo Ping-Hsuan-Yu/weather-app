@@ -10,12 +10,11 @@ import MinMaxTemp from "@/components/MinMaxTemp";
 import RelativeHumidity from "@/components/RelativeHumidity";
 import ShaderGradientBG from "@/components/ShaderGradientBG";
 import Uvi from "@/components/Uvi";
-import { WeatherProvider } from '@/context/WeatherContext';
-import client from '@/lib/apolloClient';
-import { ApolloProvider } from '@apollo/client';
+import { WeatherProvider } from "@/context/WeatherContext";
+import client from "@/lib/apolloClient";
+import { ApolloProvider } from "@apollo/client";
 
 export default function HomePage() {
-
   return (
     <ApolloProvider client={client}>
       <WeatherProvider>

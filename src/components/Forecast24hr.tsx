@@ -92,9 +92,7 @@ export default function Forecast24hr() {
                 key={`${temp.DataTime}${idx}`}
                 className="text-stone-500 dark:text-stone-400"
               >
-                {idx == 0 && !Number.isNaN(Number(temp.Temperature)) ? (
-                  <span className="text-sm">現在</span>
-                ) : Number.isNaN(Number(temp.Temperature)) ? (
+                {Number.isNaN(Number(temp.Temperature)) ? (
                   `${temp.DataTime.getHours()}:${temp.DataTime.getMinutes()}`
                 ) : temp.DataTime.getHours() === 0 ? (
                   <span className="text-sm border border-stone-400 rounded p-0.5">

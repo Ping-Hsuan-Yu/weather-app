@@ -40,7 +40,6 @@ type WeatherContextType = {
 const WeatherContext = createContext<WeatherContextType | undefined>(undefined);
 
 export const WeatherProvider = ({ children }: { children: ReactNode }) => {
-  
   const saveLocationToLocalStorage = useCallback(
     (latitude: number, longitude: number) => {
       if (typeof window === "undefined") return;
@@ -119,9 +118,9 @@ export const WeatherProvider = ({ children }: { children: ReactNode }) => {
   ) as UseSuspenseQueryResult<AqiQueryResult>;
   if (weatherDataError) {
     console.error("weatherDataError: ", weatherDataError);
+  } else {
+    console.log(weatherData);
   }
-
-  console.log(weatherData);
 
   const town = useMemo(() => {
     const { ctyName, townName, villageName } = weatherData.aqi[0].town;
