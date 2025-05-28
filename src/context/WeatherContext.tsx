@@ -167,40 +167,44 @@ export const WeatherProvider = ({ children }: { children: ReactNode }) => {
 
   const [isDarkMode, setIsDarkMode] = useState(false);
 
+  // useEffect(() => {
+  //   // 檢查當前時間是否需要啟用 dark mode
+  //   const checkDarkMode = () => {
+  //     const now = new Date();
+  //     // const now = new Date("2025-01-14T18:00:00+08:00");
+  //     const currentTime = now.getHours() * 60 + now.getMinutes(); // 當前分鐘數
+
+  //     // 計算日出與日落的分鐘數
+  //     const [sunriseHour, sunriseMinute] =
+  //       sunriseSunset[0].SunRiseTime.split(":").map(Number);
+  //     const [sunsetHour, sunsetMinute] =
+  //       sunriseSunset[0].SunSetTime.split(":").map(Number);
+  //     const sunriseTime = sunriseHour * 60 + sunriseMinute;
+  //     const sunsetTime = sunsetHour * 60 + sunsetMinute;
+
+  //     // 如果不在日出到日落之間，啟用 dark mode
+  //     const isDark = currentTime < sunriseTime || currentTime >= sunsetTime;
+  //     setIsDarkMode(isDark);
+  //   };
+
+  //   // 初始檢查
+  //   checkDarkMode();
+
+  //   // 每分鐘檢查一次
+  //   const interval = setInterval(checkDarkMode, 60000); // 每分鐘檢查一次
+  //   return () => clearInterval(interval); // 清除 interval
+  // }, [sunriseSunset]);
   useEffect(() => {
-    // 檢查當前時間是否需要啟用 dark mode
-    const checkDarkMode = () => {
-      const now = new Date();
-      // const now = new Date("2025-01-14T18:00:00+08:00");
-      const currentTime = now.getHours() * 60 + now.getMinutes(); // 當前分鐘數
+    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+    setIsDarkMode(mediaQuery.matches);
 
-      // 計算日出與日落的分鐘數
-      const [sunriseHour, sunriseMinute] =
-        sunriseSunset[0].SunRiseTime.split(":").map(Number);
-      const [sunsetHour, sunsetMinute] =
-        sunriseSunset[0].SunSetTime.split(":").map(Number);
-      const sunriseTime = sunriseHour * 60 + sunriseMinute;
-      const sunsetTime = sunsetHour * 60 + sunsetMinute;
-
-      // 如果不在日出到日落之間，啟用 dark mode
-      const isDark = currentTime < sunriseTime || currentTime >= sunsetTime;
-      setIsDarkMode(isDark);
-
-      // 更新 HTML <html> 的 class
-      if (isDark) {
-        document.documentElement.classList.add("dark");
-      } else {
-        document.documentElement.classList.remove("dark");
-      }
+    const handler = (event: MediaQueryListEvent) => {
+      setIsDarkMode(event.matches);
     };
 
-    // 初始檢查
-    checkDarkMode();
-
-    // 每分鐘檢查一次
-    const interval = setInterval(checkDarkMode, 60000); // 每分鐘檢查一次
-    return () => clearInterval(interval); // 清除 interval
-  }, [sunriseSunset]);
+    mediaQuery.addEventListener("change", handler);
+    return () => mediaQuery.removeEventListener("change", handler);
+  }, []);
 
   function haversineDistance(
     lat1: number,
