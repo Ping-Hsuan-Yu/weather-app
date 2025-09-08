@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import {
   CategoryScale,
@@ -8,9 +8,13 @@ import {
   PointElement,
 } from "chart.js";
 import ChartDataLabels from "chartjs-plugin-datalabels";
-import { useMemo } from "react";
 import { Line } from "react-chartjs-2";
-import { useWeatherContext } from "@/context/WeatherContext";
+
+import { useMemo } from "react";
+
+import { useWeatherData } from "@/context/WeatherDataContext";
+import { useTheme } from "@/context/ThemeContext";
+
 import CodeToIcon from "./CodeToIcon";
 
 ChartJS.register(
@@ -22,7 +26,10 @@ ChartJS.register(
 );
 
 export default function ForecastWeekday() {
-  const weekdays = useMemo(() => ["日", "一", "二", "三", "四", "五", "六"], []);
+  const weekdays = useMemo(
+    () => ["日", "一", "二", "三", "四", "五", "六"],
+    []
+  );
   const labels = useMemo(() => {
     const today = new Date();
     const initialLabels = ["今", "明"];
@@ -43,7 +50,8 @@ export default function ForecastWeekday() {
     });
   }, []);
 
-  const { isDarkMode, weatherData } = useWeatherContext();
+  const { isDarkMode } = useTheme();
+  const { weatherData } = useWeatherData();
 
   const maxTemperatureData =
     weatherData.aqi[0].town.forecastWeekday.MaxTemperature.Time;
@@ -119,24 +127,8 @@ export default function ForecastWeekday() {
       <div className="flex justify-between items-baseline px-4 mb-2">
         {labels.map((day, index) => (
           <div key={day} className="text-center">
-            <div
-              // className={
-              //   index == 0
-              //     ? "text-stone-400"
-              //     : "text-primary"
-              // }
-              className="text-primary"
-            >
-              {day}
-            </div>
-            <div
-              // className={
-              //   index == 0
-              //     ? "text-stone-400"
-              //     : "text-primary"
-              // }
-              className="text-primary"
-            >
+            <div className="text-primary">{day}</div>
+            <div className="text-primary">
               {weekDate[index]}
               <span className="text-xs">日</span>
             </div>
@@ -234,8 +226,7 @@ export default function ForecastWeekday() {
         </div> */}
         {forecastWeekdayWeather
           .filter(
-            (weather) =>
-              new Date(weather.StartTime).getHours() === 18
+            (weather) => new Date(weather.StartTime).getHours() === 18
             // new Date(weather.StartTime).getDate() !== new Date().getDate()
           )
           .map((time) => {

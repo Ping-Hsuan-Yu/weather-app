@@ -1,9 +1,9 @@
-"use client"
+"use client";
 
-import { useWeatherContext } from "@/context/WeatherContext";
+import { useWeatherData } from "@/context/WeatherDataContext";
 
 export default function CurrentTemp() {
-  const { currentTemp } = useWeatherContext();
+  const { currentTemp } = useWeatherData();
 
   return (
     <div className="text-8xl font-thin tracking-tight text-primary">

@@ -1,10 +1,10 @@
 "use client";
 
 import { useMemo } from "react";
-import { useWeatherContext } from "@/context/WeatherContext";
+import { useWeatherData } from "@/context/WeatherDataContext";
 
 export default function MinMaxTemp() {
-  const { weatherData } = useWeatherContext();
+  const { weatherData } = useWeatherData();
   const todayMinTemp = useMemo(() => {
     const forecastMinTemp = Number(
       weatherData.aqi[0].town.forecastWeekday.MinTemperature.Time[0]

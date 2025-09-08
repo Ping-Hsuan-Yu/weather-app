@@ -1,10 +1,10 @@
-"use client"
+"use client";
 
 import { useMemo } from "react";
-import { useWeatherContext } from "@/context/WeatherContext";
+import { useWeatherData } from "@/context/WeatherDataContext";
 
 export default function Uvi() {
-  const { weatherData } = useWeatherContext();
+  const { weatherData } = useWeatherData();
   const uv = useMemo(
     () => weatherData.aqi[0].town.forecastWeekday.UVIndex.Time[0],
     [weatherData]

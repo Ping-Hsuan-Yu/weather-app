@@ -1,10 +1,10 @@
-"use client"
+"use client";
 
-import { useWeatherContext } from "@/context/WeatherContext";
+import { useTheme } from "@/context/ThemeContext";
 import { ShaderGradient, ShaderGradientCanvas } from "@shadergradient/react";
 
 export default function ShaderGradientBG() {
-  const { isDarkMode } = useWeatherContext();
+  const { isDarkMode } = useTheme();
 
   return (
     <ShaderGradientCanvas

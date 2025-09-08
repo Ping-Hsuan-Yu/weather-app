@@ -1,9 +1,11 @@
-"use client"
+"use client";
 
-import { useWeatherContext } from "@/context/WeatherContext";
+import { useWeatherData } from "@/context/WeatherDataContext";
+import { useLocation } from "@/context/LocationContext";
 
 export default function Location() {
-  const { town, getUserPosition } = useWeatherContext();
+  const { town } = useWeatherData();
+  const { getUserPosition } = useLocation();
 
   return (
     <div className="flex justify-center items-center text-tertiary gap-1">

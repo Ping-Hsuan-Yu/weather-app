@@ -1,10 +1,10 @@
-"use client"
+"use client";
 
 import { useMemo } from "react";
-import { useWeatherContext } from "@/context/WeatherContext";
+import { useWeatherData } from "@/context/WeatherDataContext";
 
 export default function RelativeHumidity() {
-  const { weatherData, secondaryStation } = useWeatherContext();
+  const { weatherData, secondaryStation } = useWeatherData();
   const relativeHumidity = useMemo(() => {
     const hUMD = weatherData.aqi[0].station.WeatherElement.RelativeHumidity
     const secHUMD = secondaryStation?.WeatherElement.RelativeHumidity

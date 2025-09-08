@@ -1,10 +1,10 @@
-"use client"
+"use client";
 
 import { useMemo } from "react";
-import { useWeatherContext } from "@/context/WeatherContext";
+import { useWeatherData } from "@/context/WeatherDataContext";
 
 export default function ApparentTemp() {
-  const { weatherData, currentTemp } = useWeatherContext();
+  const { weatherData, currentTemp } = useWeatherData();
   
   const apparentTemp = useMemo(() => {
     const data = weatherData.aqi[0].town.forecast72hr.ApparentTemperature.Time;

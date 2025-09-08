@@ -1,10 +1,10 @@
-"use client"
+"use client";
 
 import { useMemo } from "react";
-import { useWeatherContext } from "@/context/WeatherContext";
+import { useWeatherData } from "@/context/WeatherDataContext";
 
 export default function Aqi() {
-  const { weatherData } = useWeatherContext();
+  const { weatherData } = useWeatherData();
   const aqiData = useMemo(
     () => ({ data: weatherData.aqi[0].aqi, status: weatherData.aqi[0].status }),
     [weatherData]

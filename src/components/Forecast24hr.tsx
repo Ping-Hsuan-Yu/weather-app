@@ -1,11 +1,11 @@
-"use client"
+"use client";
 
 import { ScrollArea } from "@radix-ui/themes";
-import { useWeatherContext } from "@/context/WeatherContext";
+import { useWeatherData } from "@/context/WeatherDataContext";
 import CodeToIcon from "./CodeToIcon";
 
 export default function Forecast24hr() {
-  const { weatherData, sunriseSunsetDate } = useWeatherContext();
+  const { weatherData, solarEventsToDate } = useWeatherData();
   const temperatureData = weatherData.aqi[0].town.forecast72hr.Temperature.Time;
   const weatherData72 = weatherData.aqi[0].town.forecast72hr.Weather.Time;
   const pOPData =
@@ -33,15 +33,15 @@ export default function Forecast24hr() {
       WeatherCode,
       ProbabilityOfPrecipitation,
       isDay:
-        (sunriseSunsetDate.sunrise <= targetTime &&
-          targetTime <= sunriseSunsetDate.sunset) ||
-        (sunriseSunsetDate.tomorrowSunrise <= targetTime &&
-          targetTime <= sunriseSunsetDate.tomorrowSunset),
+        (solarEventsToDate.sunrise <= targetTime &&
+          targetTime <= solarEventsToDate.sunset) ||
+        (solarEventsToDate.tomorrowSunrise <= targetTime &&
+          targetTime <= solarEventsToDate.tomorrowSunset),
     };
   });
 
   concatData.push({
-    DataTime: sunriseSunsetDate.sunrise,
+    DataTime: solarEventsToDate.sunrise,
     Temperature: "日出",
     isDay: true,
     Weather: "日出",
@@ -49,7 +49,7 @@ export default function Forecast24hr() {
     ProbabilityOfPrecipitation: "",
   });
   concatData.push({
-    DataTime: sunriseSunsetDate.sunset,
+    DataTime: solarEventsToDate.sunset,
     Temperature: "日落",
     isDay: false,
     Weather: "日落",
@@ -57,7 +57,7 @@ export default function Forecast24hr() {
     ProbabilityOfPrecipitation: "",
   });
   concatData.push({
-    DataTime: sunriseSunsetDate.tomorrowSunrise,
+    DataTime: solarEventsToDate.tomorrowSunrise,
     Temperature: "日出",
     isDay: true,
     Weather: "日出",
@@ -65,7 +65,7 @@ export default function Forecast24hr() {
     ProbabilityOfPrecipitation: "",
   });
   concatData.push({
-    DataTime: sunriseSunsetDate.tomorrowSunset,
+    DataTime: solarEventsToDate.tomorrowSunset,
     Temperature: "日落",
     isDay: false,
     Weather: "日落",
@@ -82,6 +82,12 @@ export default function Forecast24hr() {
     return item.DataTime >= now && item.DataTime <= later;
   });
 
+  const formatHM = (d: Date) => {
+    const hh = String(d.getHours()).padStart(2, "0");
+    const mm = String(d.getMinutes()).padStart(2, "0");
+    return `${hh}:${mm}`;
+  };
+
   return (
     <ScrollArea className="mt-2 glass py-2 h-30">
       <table>
@@ -93,7 +99,7 @@ export default function Forecast24hr() {
                 className="text-stone-500 dark:text-stone-400"
               >
                 {Number.isNaN(Number(temp.Temperature)) ? (
-                  `${temp.DataTime.getHours()}:${temp.DataTime.getMinutes()}`
+                  formatHM(temp.DataTime)
                 ) : temp.DataTime.getHours() === 0 ? (
                   <span className="text-sm border border-stone-400 rounded p-0.5">
                     明日

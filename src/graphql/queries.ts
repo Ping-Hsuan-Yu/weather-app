@@ -132,7 +132,7 @@ export const GET_WEATHER = gql`
   }
 `;
 
-export const GET_SUNRISESET = gql`
+export const GET_SOLAR_EVENTS = gql`
   query Forecast($ctyName: String, $time: String) {
     forecast(LocationName: $ctyName) {
       Locations {
