@@ -1,4 +1,4 @@
-"use client"
+'use client'
 
 import {
   CategoryScale,
@@ -6,78 +6,62 @@ import {
   LinearScale,
   LineElement,
   PointElement,
-} from "chart.js";
-import ChartDataLabels from "chartjs-plugin-datalabels";
-import { useMemo } from "react";
-import { Line } from "react-chartjs-2";
-import { useWeatherContext } from "@/context/WeatherContext";
-import CodeToIcon from "./CodeToIcon";
+} from 'chart.js'
+import ChartDataLabels from 'chartjs-plugin-datalabels'
+import { useMemo } from 'react'
+import { Line } from 'react-chartjs-2'
+import { useWeatherContext } from '@/context/WeatherContext'
+import CodeToIcon from './CodeToIcon'
 
-ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  ChartDataLabels
-);
+ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, ChartDataLabels)
+
+const SHORT_WEEKDAY_LABELS = ['日', '一', '二', '三', '四', '五', '六'] as const
+const SPECIAL_DAY_LABELS = ['今', '明'] as const
+const UPCOMING_DAY_COUNT = 7
 
 export default function ForecastWeekday() {
-  const weekdays = useMemo(() => ["日", "一", "二", "三", "四", "五", "六"], []);
-  const labels = useMemo(() => {
-    const today = new Date();
-    const initialLabels = ["今", "明"];
-    for (let index = 2; index <= 6; index++) {
-      const futureDate = new Date();
-      futureDate.setDate(today.getDate() + index);
-      initialLabels.push(weekdays[futureDate.getDay()]);
-    }
-    return initialLabels;
-  }, [weekdays]);
+  const upcomingDays = useMemo(() => {
+    const today = new Date()
+    return Array.from({ length: UPCOMING_DAY_COUNT }, (_, offset) => {
+      const futureDate = new Date(today)
+      futureDate.setDate(today.getDate() + offset)
+      return {
+        label: SPECIAL_DAY_LABELS[offset] ?? SHORT_WEEKDAY_LABELS[futureDate.getDay()],
+        dayOfMonth: futureDate.getDate(),
+      }
+    })
+  }, [])
 
-  const weekDate = useMemo(() => {
-    const today = new Date();
-    return Array.from({ length: 8 }, (_, index) => {
-      const futureDate = new Date();
-      futureDate.setDate(today.getDate() + index);
-      return futureDate.getDate();
-    });
-  }, []);
+  const { isDarkMode, weatherData } = useWeatherContext()
 
-  const { isDarkMode, weatherData } = useWeatherContext();
-
-  const maxTemperatureData =
-    weatherData.aqi[0].town.forecastWeekday.MaxTemperature.Time;
+  const maxTemperatureData = weatherData.aqi[0].town.forecastWeekday.MaxTemperature.Time
   const maxTemperature = Object.values(
     maxTemperatureData.reduce(
       (
         acc: Record<
           string,
           {
-            DateTime: string;
-            MaxTemperature: string;
+            DateTime: string
+            MaxTemperature: string
           }
         >,
         item
       ) => {
-        const date = item.StartTime.split("T")[0];
-        const temperature = parseInt(item.MaxTemperature, 10);
-        if (
-          !acc[date] ||
-          temperature > parseInt(acc[date].MaxTemperature, 10)
-        ) {
+        const date = item.StartTime.split('T')[0]
+        const temperature = parseInt(item.MaxTemperature, 10)
+        if (!acc[date] || temperature > parseInt(acc[date].MaxTemperature, 10)) {
           acc[date] = {
             DateTime: item.StartTime,
             MaxTemperature: temperature.toString(),
-          };
+          }
         }
-        return acc;
+        return acc
       },
       {}
     )
-  );
+  )
 
-  const minTemperatureData =
-    weatherData.aqi[0].town.forecastWeekday.MinTemperature.Time;
+  const minTemperatureData = weatherData.aqi[0].town.forecastWeekday.MinTemperature.Time
 
   const minTemperature = Object.values(
     minTemperatureData.reduce(
@@ -85,40 +69,39 @@ export default function ForecastWeekday() {
         acc: Record<
           string,
           {
-            DateTime: string;
-            MinTemperature: string;
+            DateTime: string
+            MinTemperature: string
           }
         >,
         item
       ) => {
-        const date = item.StartTime.split("T")[0];
-        const temperature = parseInt(item.MinTemperature, 10);
-        if (
-          !acc[date] ||
-          temperature < parseInt(acc[date].MinTemperature, 10)
-        ) {
+        const date = item.StartTime.split('T')[0]
+        const temperature = parseInt(item.MinTemperature, 10)
+        if (!acc[date] || temperature < parseInt(acc[date].MinTemperature, 10)) {
           acc[date] = {
             DateTime: item.StartTime,
             MinTemperature: temperature.toString(),
-          };
+          }
         }
-        return acc;
+        return acc
       },
       {}
     )
-  );
+  )
 
-  const forecastWeekdayWeather =
-    weatherData.aqi[0].town.forecastWeekday.Weather.Time;
+  const forecastWeekdayWeather = weatherData.aqi[0].town.forecastWeekday.Weather.Time
 
   const forecastWeekdayPOP =
-    weatherData.aqi[0].town.forecastWeekday.ProbabilityOfPrecipitation.Time;
+    weatherData.aqi[0].town.forecastWeekday.ProbabilityOfPrecipitation.Time
 
   return (
     <div className="glass mt-2 px-2 py-4">
       <div className="flex justify-between items-baseline px-4 mb-2">
-        {labels.map((day, index) => (
-          <div key={day} className="text-center">
+        {upcomingDays.map(({ label, dayOfMonth }) => (
+          <div
+            key={`${label}-${dayOfMonth}`}
+            className="text-center"
+          >
             <div
               // className={
               //   index == 0
@@ -127,7 +110,7 @@ export default function ForecastWeekday() {
               // }
               className="text-primary"
             >
-              {day}
+              {label}
             </div>
             <div
               // className={
@@ -137,7 +120,7 @@ export default function ForecastWeekday() {
               // }
               className="text-primary"
             >
-              {weekDate[index]}
+              {dayOfMonth}
               <span className="text-xs">日</span>
             </div>
           </div>
@@ -149,15 +132,13 @@ export default function ForecastWeekday() {
         </div> */}
         {forecastWeekdayWeather
           .filter(
-            (weather) =>
+            weather =>
               new Date(weather.StartTime).getHours() === 6 ||
               new Date(weather.StartTime).getHours() === 12
             // new Date(weather.StartTime).getDate() !== new Date().getDate()
           )
-          .map((time) => {
-            const pop = forecastWeekdayPOP.find(
-              (pop) => pop.StartTime === time.StartTime
-            );
+          .map(time => {
+            const pop = forecastWeekdayPOP.find(pop => pop.StartTime === time.StartTime)
             return (
               <CodeToIcon
                 key={time.StartTime}
@@ -166,7 +147,7 @@ export default function ForecastWeekday() {
                 isDay
                 POP={pop?.ProbabilityOfPrecipitation}
               />
-            );
+            )
           })}
       </div>
       <Line
@@ -179,12 +160,12 @@ export default function ForecastWeekday() {
             },
             datalabels: {
               display: true,
-              color: isDarkMode ? "#fafaf9" : "#1c1917",
+              color: isDarkMode ? '#fafaf9' : '#1c1917',
               font: {
-                family: "Barlow",
+                family: 'Barlow',
                 size: 14,
               },
-              formatter: (value) => `${value}°`,
+              formatter: value => `${value}°`,
             },
           },
           layout: {
@@ -205,24 +186,24 @@ export default function ForecastWeekday() {
           },
         }}
         data={{
-          labels,
+          labels: upcomingDays.map(({ label }) => label),
           datasets: [
             {
-              data: maxTemperature.map((max) => max.MaxTemperature),
-              borderColor: "#ea580c",
-              backgroundColor: "#ea580c",
+              data: maxTemperature.map(max => max.MaxTemperature),
+              borderColor: '#ea580c',
+              backgroundColor: '#ea580c',
               tension: 0.4,
               datalabels: {
-                align: "top",
+                align: 'top',
               },
             },
             {
-              data: minTemperature.map((min) => min.MinTemperature),
-              borderColor: "#0284c7",
-              backgroundColor: "#0284c7",
+              data: minTemperature.map(min => min.MinTemperature),
+              borderColor: '#0284c7',
+              backgroundColor: '#0284c7',
               tension: 0.4,
               datalabels: {
-                align: "bottom",
+                align: 'bottom',
               },
             },
           ],
@@ -234,14 +215,12 @@ export default function ForecastWeekday() {
         </div> */}
         {forecastWeekdayWeather
           .filter(
-            (weather) =>
-              new Date(weather.StartTime).getHours() === 18
+            weather => new Date(weather.StartTime).getHours() === 18
             // new Date(weather.StartTime).getDate() !== new Date().getDate()
           )
-          .map((time) => {
-            const pop = forecastWeekdayPOP.find(
-              (pop) => pop.StartTime === time.StartTime
-            );
+          .slice(0, 7)
+          .map(time => {
+            const pop = forecastWeekdayPOP.find(pop => pop.StartTime === time.StartTime)
             return (
               <CodeToIcon
                 key={time.StartTime}
@@ -250,9 +229,9 @@ export default function ForecastWeekday() {
                 isDay={false}
                 POP={pop?.ProbabilityOfPrecipitation}
               />
-            );
+            )
           })}
       </div>
     </div>
-  );
+  )
 }
