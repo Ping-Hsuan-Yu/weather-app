@@ -1,0 +1,628 @@
+type AQI {
+  sitename: String
+  county: String
+  aqi: String
+  pollutant: String
+  status: String
+  so2: String
+  co: String
+  o3: String
+  o3_8hr: String
+  pm10: String
+  pm2_5: String
+  no2: String
+  nox: String
+  no: String
+  wind_speed: String
+  wind_direc: String
+  publishtime: String
+  co_8hr: String
+  pm2_5_avg: String
+  pm10_avg: String
+  so2_avg: String
+  longitude: String
+  latitude: String
+  siteid: String
+  station: ObsStation
+  report: NowObsReport
+  town: TownVillageItem
+}
+
+type ATTime {
+  DataTime: String
+  ApparentTemperature: String
+}
+
+type ApparentTemperature {
+  ElementName: String
+  Time(first: Int): [ATTime]
+}
+
+type Attraction {
+  AttractionID: String!
+  AttractionName: String
+  AlternateNames: [String]
+  Description: String
+  PositionLat: Float
+  PositionLon: Float
+  Geometry: String
+  AttractionClasses: [Int]
+  PostalAddress: PostalAddress
+  Telephones: [Telephone]
+  Images: [Image]
+  Organizations: [Organization]
+  ServiceTimeInfo: String
+  TrafficInfo: String
+  ParkingInfo: String
+  Facilities: [Int]
+  ServiceStatus: Int
+  IsPublicAccess: Int
+  IsAccessibleForFree: Int
+  FeeInfo: String
+  PaymentMethods: [String]
+  LocatedCities: [LocatedCity]
+  WebsiteUrl: String
+  ReservationURLs: [String]
+  MapURLs: [String]
+  SameAsURLs: [String]
+  SocialMediaURLs: [SocialMediaURL]
+  VisitDuration: Int
+  AssetsClass: Int
+  SubAttractions: [SubAttraction]
+  PartOfAttraction: [PartOfAttraction]
+  Remarks: String
+  UpdateTime: String
+}
+
+type AvgDewPoint {
+  ElementName: String
+  Time(first: Int): [AvgTdTime]
+}
+
+type AvgRHTime {
+  StartTime: String
+  EndTime: String
+  RelativeHumidity: String
+}
+
+type AvgRelativeHumidity {
+  ElementName: String
+  Time(first: Int): [AvgRHTime]
+}
+
+type AvgTTime {
+  StartTime: String
+  EndTime: String
+  Temperature: String
+}
+
+type AvgTdTime {
+  StartTime: String
+  EndTime: String
+  DewPoint: String
+}
+
+type AvgTemperature {
+  ElementName: String
+  Time(first: Int): [AvgTTime]
+}
+
+type AvgWDTime {
+  StartTime: String
+  EndTime: String
+  WindDirection: String
+}
+
+type AvgWSTime {
+  StartTime: String
+  EndTime: String
+  WindSpeed: String
+  BeaufortScale: String
+}
+
+type AvgWindDirection {
+  ElementName: String
+  Time(first: Int): [AvgWDTime]
+}
+
+type AvgWindSpeed {
+  ElementName: String
+  Time(first: Int): [AvgWSTime]
+}
+
+type CITime {
+  DataTime: String
+  ComfortIndex: String
+  ComfortIndexDescription: String
+}
+
+type ComfortIndex {
+  ElementName: String
+  Time(first: Int): [CITime]
+}
+
+type Coordinate {
+  CoordinateName: String
+  CoordinateFormat: String
+  StationLatitude: String
+  StationLongitude: String
+}
+
+type DailyExtreme {
+  DailyHigh: DailyValue
+  DailyLow: DailyValue
+}
+
+type DailyValue {
+  TemperatureInfo: TemperatureInfo
+}
+
+type DewPoint {
+  ElementName: String
+  Time(first: Int): [TdTime]
+}
+
+type GeoInfo {
+  Coordinates: [Coordinate]
+  StationAltitude: String
+  CountyName: String
+  TownName: String
+  CountyCode: String
+  TownCode: String
+}
+
+type GustInfo {
+  PeakGustSpeed: String
+  Occurred_At: GustOccurrence
+}
+
+type GustOccurrence {
+  WindDirection: String
+  DateTime: String
+}
+
+type Image {
+  Name: String
+  Description: String
+  URL: String
+  Width: Int
+  Height: Int
+  Keywords: [String]
+}
+
+type Link {
+  LinkID: String!
+  RoadID: String
+  RoadName: String
+  RoadClass: Int
+  RoadClassName: String
+  RoadDirection: String
+  RoadDirectionID: String
+  Bearing: String
+  StartNode: String
+  EndNode: String
+  StartMile: String
+  EndMile: String
+  MileLength: String
+  Length: Float
+  StartPoint: String
+  EndPoint: String
+  MidPoint: String
+  OpenLR: String
+  CityID: String
+  CityName: String
+  City: String
+  Version: String
+  UpdateDate: String
+  station: RainStation
+}
+
+type LocatedCity {
+  Name: String
+  Class: String
+  City: String
+  CityCode: String
+  Town: String
+  TownCode: String
+}
+
+type Location72hr {
+  LocationName: String!
+  Geocode: String
+  Latitude: String
+  Longitude: String
+  ApparentTemperature: ApparentTemperature
+  ComfortIndex: ComfortIndex
+  ProbabilityOfPrecipitation: ProbabilityOfPrecipitation
+  RelativeHumidity: RelativeHumidity
+  Temperature: Temperature
+  DewPoint: DewPoint
+  WindDirection: WindDirection
+  WeatherDescription: WeatherDescription
+  WindSpeed: WindSpeed
+  Weather: Weather
+  attraction(AttractionClass: Int, first: Int): [Attraction]
+  sunRise(timeTo: String): [SunRise]
+}
+
+type LocationWeekday {
+  LocationName: String!
+  Geocode: String
+  Latitude: String
+  Longitude: String
+  MinApparentTemperature: MinApparentTemperature
+  MaxApparentTemperature: MaxApparentTemperature
+  MinComfortIndex: MinComfortIndex
+  MaxComfortIndex: MaxComfortIndex
+  ProbabilityOfPrecipitation: ProbabilityOfPrecipitation
+  RelativeHumidity: AvgRelativeHumidity
+  Temperature: AvgTemperature
+  MinTemperature: MinTemperature
+  MaxTemperature: MaxTemperature
+  DewPoint: AvgDewPoint
+  UVIndex: UVIndex
+  WindDirection: AvgWindDirection
+  WeatherDescription: WeatherDescription
+  WindSpeed: AvgWindSpeed
+  Weather: Weather
+  attraction(AttractionClass: Int, first: Int): [Attraction]
+  sunRise(timeTo: String): [SunRise]
+}
+
+type MaxATTime {
+  StartTime: String
+  EndTime: String
+  MaxApparentTemperature: String
+}
+
+type MaxApparentTemperature {
+  ElementName: String
+  Time(first: Int): [MaxATTime]
+}
+
+type MaxCITime {
+  StartTime: String
+  EndTime: String
+  MaxComfortIndex: String
+  MaxComfortIndexDescription: String
+}
+
+type MaxComfortIndex {
+  ElementName: String
+  Time(first: Int): [MaxCITime]
+}
+
+type MaxTTime {
+  StartTime: String
+  EndTime: String
+  MaxTemperature: String
+}
+
+type MaxTemperature {
+  ElementName: String
+  Time(first: Int): [MaxTTime]
+}
+
+type MinATTime {
+  StartTime: String
+  EndTime: String
+  MinApparentTemperature: String
+}
+
+type MinApparentTemperature {
+  ElementName: String
+  Time(first: Int): [MinATTime]
+}
+
+type MinCITime {
+  StartTime: String
+  EndTime: String
+  MinComfortIndex: String
+  MinComfortIndexDescription: String
+}
+
+type MinComfortIndex {
+  ElementName: String
+  Time(first: Int): [MinCITime]
+}
+
+type MinTTime {
+  StartTime: String
+  EndTime: String
+  MinTemperature: String
+}
+
+type MinTemperature {
+  ElementName: String
+  Time(first: Int): [MinTTime]
+}
+
+type NowObsReport {
+  StationId: String!
+  StationName: String
+  ObsTime: ObsTime
+  GeoInfo: GeoInfo
+  WeatherElement: NowWeatherElement
+}
+
+type NowWeatherElement {
+  Weather: String
+  VisibilityDescription: String
+  SunshineDuration: String
+  Now: RainfallValue
+  WindDirection: String
+  WindSpeed: String
+  AirTemperature: String
+  RelativeHumidity: String
+  AirPressure: String
+  UVIndex: String
+  Max10MinAverage: WindInfo
+  GustInfo: GustInfo
+  DailyExtreme: DailyExtreme
+}
+
+type ObsStation {
+  StationId: String!
+  StationName: String
+  ObsTime: ObsTime
+  GeoInfo: GeoInfo
+  WeatherElement: WeatherElement
+}
+
+type ObsTime {
+  DateTime: String
+}
+
+type Occurrence {
+  DateTime: String
+}
+
+type Opendata {
+  Locations(first: Int): [LocationWeekday]
+}
+
+type Organization {
+  Name: String
+  Class: String
+  TaxCode: String
+  URL: String
+  Telephones: [Telephone]
+  MobilePhones: [String]
+  Faxes: [String]
+  Email: String
+}
+
+type PartOfAttraction {
+  AttractionID: String!
+  AttractionName: String
+}
+
+type PoP12hTime {
+  StartTime: String
+  EndTime: String
+  ProbabilityOfPrecipitation: String
+}
+
+type PostalAddress {
+  City: String
+  CityCode: String
+  Town: String
+  TownCode: String
+  ZipCode: String
+  StreetAddress: String
+}
+
+type ProbabilityOfPrecipitation {
+  ElementName: String
+  Time(first: Int): [PoP12hTime]
+}
+
+type Query {
+  forecast(LocationName: String): Opendata
+  link(LinkID: String): Link
+  town(Longitude: Float, Latitude: Float): TownVillageItem
+  aqi(longitude: Float, latitude: Float): [AQI]
+  traStation(LocationCity: String): [TraStation]
+}
+
+type RHTime {
+  DataTime: String
+  RelativeHumidity: String
+}
+
+type RainStation {
+  StationId: String!
+  StationName: String
+  Maintainer: String
+  ObsTime: ObsTime
+  GeoInfo: GeoInfo
+  RainfallElement: RainfallElement
+}
+
+type RainfallElement {
+  Now: RainfallValue
+  Past10Min: RainfallValue
+  Past1hr: RainfallValue
+  Past3hr: RainfallValue
+  Past6hr: RainfallValue
+  Past12hr: RainfallValue
+  Past24hr: RainfallValue
+  Past2days: RainfallValue
+  Past3days: RainfallValue
+}
+
+type RainfallValue {
+  Precipitation: String
+}
+
+type RelativeHumidity {
+  ElementName: String
+  Time(first: Int): [RHTime]
+}
+
+type SocialMediaURL {
+  Name: String
+  Description: String
+  Class: String
+  URL: String
+  Keywords: [String]
+  Tags: [String]
+}
+
+type SubAttraction {
+  AttractionID: String!
+  AttractionName: String
+}
+
+type SunRise {
+  Date: String
+  BeginCivilTwilightTime: String
+  SunRiseTime: String
+  SunRiseAZ: String
+  SunTransitTime: String
+  SunTransitAlt: String
+  SunSetTime: String
+  SunSetAZ: String
+  EndCivilTwilightTime: String
+}
+
+type TTime {
+  DataTime: String
+  Temperature: String
+}
+
+type TdTime {
+  DataTime: String
+  DewPoint: String
+}
+
+type Telephone {
+  Tel: String
+  Ext: String
+}
+
+type Temperature {
+  ElementName: String
+  Time(first: Int): [TTime]
+}
+
+type TemperatureInfo {
+  AirTemperature: String
+  Occurred_At: Occurrence
+}
+
+type TownVillageItem {
+  ctyCode: String
+  ctyName: String
+  townCode: String
+  townName: String
+  villageCode: String
+  villageName: String
+  forecast72hr: Location72hr
+  forecastWeekday: LocationWeekday
+  aqi: [AQI]
+  station: [ObsStation]
+}
+
+type TraStation {
+  StationUID: String
+  StationID: String
+  StationName: TraStationName
+  StationAddress: String
+  StationPhone: String
+  OperatorID: String
+  StationClass: String
+  UpdateTime: String
+  VersionID: Int
+  StationPosition: TraStationPosition
+  LocationCity: String
+  LocationCityCode: String
+  LocationTown: String
+  LocationTownCode: String
+  forecast72hr: Location72hr
+  forecastWeekday: LocationWeekday
+}
+
+type TraStationName {
+  Zh_tw: String
+  En: String
+}
+
+type TraStationPosition {
+  PositionLon: Float
+  PositionLat: Float
+  GeoHash: String
+}
+
+type UVITime {
+  StartTime: String
+  EndTime: String
+  UVIndex: String
+  UVExposureLevel: String
+}
+
+type UVIndex {
+  ElementName: String
+  Time(first: Int): [UVITime]
+}
+
+type WDTime {
+  DataTime: String
+  WindDirection: String
+}
+
+type WSTime {
+  DataTime: String
+  WindSpeed: String
+  BeaufortScale: String
+}
+
+type Weather {
+  ElementName: String
+  Time(first: Int): [WxTime]
+}
+
+type WeatherDescription {
+  ElementName: String
+  Time(first: Int): [WeatherDescriptionTime]
+}
+
+type WeatherDescriptionTime {
+  StartTime: String
+  EndTime: String
+  WeatherDescription: String
+}
+
+type WeatherElement {
+  Weather: String
+  Now: RainfallValue
+  WindDirection: String
+  WindSpeed: String
+  AirTemperature: String
+  RelativeHumidity: String
+  AirPressure: String
+  GustInfo: GustInfo
+  DailyExtreme: DailyExtreme
+}
+
+type WindDirection {
+  ElementName: String
+  Time(first: Int): [WDTime]
+}
+
+type WindInfo {
+  WindSpeed: String
+  Occurred_At: GustOccurrence
+}
+
+type WindSpeed {
+  ElementName: String
+  Time(first: Int): [WSTime]
+}
+
+type WxTime {
+  StartTime: String
+  EndTime: String
+  Weather: String
+  WeatherCode: String
+}
