@@ -1,3 +1,18 @@
+# Indicates an Input Object is a OneOf Input Object.
+directive @oneOf on INPUT_OBJECT
+
+# This directive allows results to be deferred during execution
+directive @defer(
+  # Deferred behaviour is controlled by this argument
+  if: Boolean! = true
+
+  # A unique label that represents the fragment being deferred
+  label: String
+) on FRAGMENT_SPREAD | INLINE_FRAGMENT
+
+# This directive disables error propagation when a non nullable field returns null for the given operation.
+directive @experimental_disableErrorPropagation on QUERY | MUTATION | SUBSCRIPTION
+
 type AQI {
   sitename: String
   county: String
@@ -33,9 +48,24 @@ type ATTime {
   ApparentTemperature: String
 }
 
+type Alert {
+  areaDesc: String
+  expires: String
+  rainfall: [Info]
+  coldSurge: [Info]
+  heat: [Info]
+  typhoon: [TyphoonInfo]
+}
+
 type ApparentTemperature {
   ElementName: String
   Time(first: Int): [ATTime]
+}
+
+type Area {
+  areaDesc: String
+  polygon: String
+  geocode: Value
 }
 
 type Attraction {
@@ -190,6 +220,27 @@ type Image {
   Keywords: [String]
 }
 
+type Info {
+  language: String
+  category: String
+  event: String
+  responseType: String
+  urgency: String
+  severity: String
+  certainty: String
+  eventCode: Value
+  effective: String
+  onset: String
+  expires: String
+  senderName: String
+  headline: String
+  description: String
+  instruction: String
+  web: String
+  parameter: [Value]
+  area: [TyphoonArea]
+}
+
 type Link {
   LinkID: String!
   RoadID: String
@@ -303,6 +354,11 @@ type MaxTemperature {
   Time(first: Int): [MaxTTime]
 }
 
+type Measurement {
+  value: String
+  unit: String
+}
+
 type MinATTime {
   StartTime: String
   EndTime: String
@@ -335,6 +391,11 @@ type MinTTime {
 type MinTemperature {
   ElementName: String
   Time(first: Int): [MinTTime]
+}
+
+type Name {
+  value: String
+  lang: String
 }
 
 type NowObsReport {
@@ -423,6 +484,7 @@ type Query {
   town(Longitude: Float, Latitude: Float): TownVillageItem
   aqi(longitude: Float, latitude: Float): [AQI]
   traStation(LocationCity: String): [TraStation]
+  alert(areaDesc: [String], expires: String): Alert
 }
 
 type RHTime {
@@ -458,6 +520,15 @@ type RainfallValue {
 type RelativeHumidity {
   ElementName: String
   Time(first: Int): [RHTime]
+}
+
+type Section {
+  title: String
+  value: String
+  analysis: TyphoonDetail
+  prediction: TyphoonDetail
+  typhoon_name: String
+  cwa_typhoon_name: String
 }
 
 type SocialMediaURL {
@@ -541,6 +612,7 @@ type TraStation {
   LocationTownCode: String
   forecast72hr: Location72hr
   forecastWeekday: LocationWeekday
+  station: ObsStation
 }
 
 type TraStationName {
@@ -554,6 +626,51 @@ type TraStationPosition {
   GeoHash: String
 }
 
+type Typhoon {
+  section: [Section]
+}
+
+type TyphoonArea {
+  areaDesc: String
+  geocode: Value
+  polygon: String
+}
+
+type TyphoonDescription {
+  section: [Section]
+  typhoon_info: [Typhoon]
+}
+
+type TyphoonDetail {
+  time: String
+  position: String
+  gust: Measurement
+  pressure: Measurement
+  scale: [Name]
+  max_winds: Measurement
+  radius_of_15mps: Measurement
+}
+
+type TyphoonInfo {
+  language: String
+  category: String
+  event: String
+  responseType: String
+  urgency: String
+  severity: String
+  certainty: String
+  eventCode: Value
+  effective: String
+  onset: String
+  expires: String
+  senderName: String
+  headline: String
+  description: TyphoonDescription
+  web: String
+  parameter: [Value]
+  area: [Area]
+}
+
 type UVITime {
   StartTime: String
   EndTime: String
@@ -564,6 +681,11 @@ type UVITime {
 type UVIndex {
   ElementName: String
   Time(first: Int): [UVITime]
+}
+
+type Value {
+  valueName: String
+  value: String
 }
 
 type WDTime {

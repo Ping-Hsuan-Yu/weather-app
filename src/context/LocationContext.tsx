@@ -6,7 +6,8 @@ import { useUserLocation } from "@/hooks/useUserLocation";
 type Coordinates = { latitude: number; longitude: number };
 
 type LocationContextType = {
-  userLocation: Coordinates;
+  userLocation: Coordinates | null;
+  isReady: boolean;
   getUserPosition: () => void;
 };
 
@@ -16,7 +17,7 @@ export function LocationProvider({ children }: { children: ReactNode }) {
   const { userLocation, getUserPosition } = useUserLocation();
 
   const value = useMemo(
-    () => ({ userLocation, getUserPosition }),
+    () => ({ userLocation, isReady: userLocation !== null, getUserPosition }),
     [userLocation, getUserPosition]
   );
 

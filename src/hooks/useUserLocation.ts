@@ -10,18 +10,10 @@ const DEFAULT_LOCATION: Coordinates = {
 };
 
 export function useUserLocation() {
-  const [userLocation, setUserLocation] = useState<Coordinates>(() => {
-    if (typeof window === "undefined") return DEFAULT_LOCATION;
-    try {
-      const raw = localStorage.getItem("userLocation");
-      return raw ? JSON.parse(raw) : DEFAULT_LOCATION;
-    } catch {
-      return DEFAULT_LOCATION;
-    }
-  });
+  // 初始值為 null，server 和 client 一致，避免 hydration mismatch
+  const [userLocation, setUserLocation] = useState<Coordinates | null>(null);
 
   const saveLocationToLocalStorage = useCallback((loc: Coordinates) => {
-    if (typeof window === "undefined") return;
     try {
       localStorage.setItem("userLocation", JSON.stringify(loc));
     } catch {
@@ -44,16 +36,19 @@ export function useUserLocation() {
     );
   }, [saveLocationToLocalStorage]);
 
+  // mount 後才讀 localStorage，確保 SSR 不會執行
   useEffect(() => {
-    // If no saved location, try to fetch current position once on mount
-    if (typeof window === "undefined") return;
     try {
       const raw = localStorage.getItem("userLocation");
-      if (!raw && "geolocation" in navigator) {
+      if (raw) {
+        setUserLocation(JSON.parse(raw));
+      } else if ("geolocation" in navigator) {
         getUserPosition();
+      } else {
+        setUserLocation(DEFAULT_LOCATION);
       }
     } catch {
-      // ignore
+      setUserLocation(DEFAULT_LOCATION);
     }
   }, [getUserPosition]);
 

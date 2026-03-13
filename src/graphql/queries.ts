@@ -132,6 +132,8 @@ export const GET_WEATHER = gql`
   }
 `;
 
+// TODO: 評估是否切換至此 query 取代 GET_WEATHER，
+// 可將 aqi + forecast 合併為單一請求，消除 waterfall
 export const GET_WEATHER_BY_TOWN = gql`
   query Town($lon: Float, $lat: Float) {
     town(Longitude: $lon, Latitude: $lat) {
