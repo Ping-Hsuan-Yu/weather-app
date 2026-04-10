@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Barlow, Noto_Sans_TC } from "next/font/google";
 import "./globals.css";
+import { ScrollArea } from "@radix-ui/themes";
 
 const notoSansTC = Noto_Sans_TC({
   subsets: ["latin-ext"],
@@ -26,9 +27,11 @@ export default function RootLayout({
   return (
     <html lang="zh-Hant-TW">
       <body
-        className={`${barlow.variable} ${notoSansTC.variable} antialiased`}
+        className={`${barlow.variable} ${notoSansTC.variable} antialiased h-dvh`}
       >
+        <ScrollArea>
         {children}
+        </ScrollArea>
       </body>
     </html>
   );
