@@ -1,0 +1,2592 @@
+{
+  "aqi": [
+    {
+      "aqi": "68",
+      "status": "普通",
+      "station": {
+        "GeoInfo": {
+          "Coordinates": [
+            {
+              "StationLatitude": "24.147494",
+              "StationLongitude": "120.675919"
+            },
+            {
+              "StationLatitude": "24.145736",
+              "StationLongitude": "120.684075"
+            }
+          ]
+        },
+        "WeatherElement": {
+          "Weather": "-99",
+          "Now": {
+            "Precipitation": "0.5"
+          },
+          "AirTemperature": "22.1",
+          "RelativeHumidity": "92",
+          "DailyExtreme": {
+            "DailyHigh": {
+              "TemperatureInfo": {
+                "AirTemperature": "22.2"
+              }
+            },
+            "DailyLow": {
+              "TemperatureInfo": {
+                "AirTemperature": "21.0"
+              }
+            }
+          }
+        }
+      },
+      "town": {
+        "ctyName": "臺中市",
+        "townName": "西屯區",
+        "villageName": "何仁里",
+        "forecast72hr": {
+          "ApparentTemperature": {
+            "Time": [
+              {
+                "ApparentTemperature": "23"
+              },
+              {
+                "ApparentTemperature": "24"
+              },
+              {
+                "ApparentTemperature": "24"
+              },
+              {
+                "ApparentTemperature": "25"
+              },
+              {
+                "ApparentTemperature": "25"
+              },
+              {
+                "ApparentTemperature": "26"
+              },
+              {
+                "ApparentTemperature": "26"
+              },
+              {
+                "ApparentTemperature": "26"
+              },
+              {
+                "ApparentTemperature": "26"
+              },
+              {
+                "ApparentTemperature": "26"
+              },
+              {
+                "ApparentTemperature": "26"
+              },
+              {
+                "ApparentTemperature": "25"
+              }
+            ]
+          },
+          "ProbabilityOfPrecipitation": {
+            "Time": [
+              {
+                "StartTime": "2026-05-05T06:00:00+08:00",
+                "EndTime": "2026-05-05T09:00:00+08:00",
+                "ProbabilityOfPrecipitation": "30"
+              },
+              {
+                "StartTime": "2026-05-05T09:00:00+08:00",
+                "EndTime": "2026-05-05T12:00:00+08:00",
+                "ProbabilityOfPrecipitation": "40"
+              },
+              {
+                "StartTime": "2026-05-05T12:00:00+08:00",
+                "EndTime": "2026-05-05T15:00:00+08:00",
+                "ProbabilityOfPrecipitation": "30"
+              },
+              {
+                "StartTime": "2026-05-05T15:00:00+08:00",
+                "EndTime": "2026-05-05T18:00:00+08:00",
+                "ProbabilityOfPrecipitation": "30"
+              },
+              {
+                "StartTime": "2026-05-05T18:00:00+08:00",
+                "EndTime": "2026-05-05T21:00:00+08:00",
+                "ProbabilityOfPrecipitation": "30"
+              },
+              {
+                "StartTime": "2026-05-05T21:00:00+08:00",
+                "EndTime": "2026-05-06T00:00:00+08:00",
+                "ProbabilityOfPrecipitation": "30"
+              },
+              {
+                "StartTime": "2026-05-06T00:00:00+08:00",
+                "EndTime": "2026-05-06T03:00:00+08:00",
+                "ProbabilityOfPrecipitation": "30"
+              },
+              {
+                "StartTime": "2026-05-06T03:00:00+08:00",
+                "EndTime": "2026-05-06T06:00:00+08:00",
+                "ProbabilityOfPrecipitation": "20"
+              },
+              {
+                "StartTime": "2026-05-06T06:00:00+08:00",
+                "EndTime": "2026-05-06T09:00:00+08:00",
+                "ProbabilityOfPrecipitation": "20"
+              },
+              {
+                "StartTime": "2026-05-06T09:00:00+08:00",
+                "EndTime": "2026-05-06T12:00:00+08:00",
+                "ProbabilityOfPrecipitation": "20"
+              },
+              {
+                "StartTime": "2026-05-06T12:00:00+08:00",
+                "EndTime": "2026-05-06T15:00:00+08:00",
+                "ProbabilityOfPrecipitation": "0"
+              },
+              {
+                "StartTime": "2026-05-06T15:00:00+08:00",
+                "EndTime": "2026-05-06T18:00:00+08:00",
+                "ProbabilityOfPrecipitation": "0"
+              }
+            ]
+          },
+          "Temperature": {
+            "Time": [
+              {
+                "DataTime": "2026-05-05T06:00:00+08:00",
+                "Temperature": "21"
+              },
+              {
+                "DataTime": "2026-05-05T07:00:00+08:00",
+                "Temperature": "21"
+              },
+              {
+                "DataTime": "2026-05-05T08:00:00+08:00",
+                "Temperature": "22"
+              },
+              {
+                "DataTime": "2026-05-05T09:00:00+08:00",
+                "Temperature": "22"
+              },
+              {
+                "DataTime": "2026-05-05T10:00:00+08:00",
+                "Temperature": "23"
+              },
+              {
+                "DataTime": "2026-05-05T11:00:00+08:00",
+                "Temperature": "23"
+              },
+              {
+                "DataTime": "2026-05-05T12:00:00+08:00",
+                "Temperature": "24"
+              },
+              {
+                "DataTime": "2026-05-05T13:00:00+08:00",
+                "Temperature": "24"
+              },
+              {
+                "DataTime": "2026-05-05T14:00:00+08:00",
+                "Temperature": "24"
+              },
+              {
+                "DataTime": "2026-05-05T15:00:00+08:00",
+                "Temperature": "24"
+              },
+              {
+                "DataTime": "2026-05-05T16:00:00+08:00",
+                "Temperature": "24"
+              },
+              {
+                "DataTime": "2026-05-05T17:00:00+08:00",
+                "Temperature": "23"
+              },
+              {
+                "DataTime": "2026-05-05T18:00:00+08:00",
+                "Temperature": "23"
+              },
+              {
+                "DataTime": "2026-05-05T19:00:00+08:00",
+                "Temperature": "23"
+              },
+              {
+                "DataTime": "2026-05-05T20:00:00+08:00",
+                "Temperature": "23"
+              },
+              {
+                "DataTime": "2026-05-05T21:00:00+08:00",
+                "Temperature": "22"
+              },
+              {
+                "DataTime": "2026-05-05T22:00:00+08:00",
+                "Temperature": "22"
+              },
+              {
+                "DataTime": "2026-05-05T23:00:00+08:00",
+                "Temperature": "22"
+              },
+              {
+                "DataTime": "2026-05-06T00:00:00+08:00",
+                "Temperature": "22"
+              },
+              {
+                "DataTime": "2026-05-06T01:00:00+08:00",
+                "Temperature": "22"
+              },
+              {
+                "DataTime": "2026-05-06T02:00:00+08:00",
+                "Temperature": "22"
+              },
+              {
+                "DataTime": "2026-05-06T03:00:00+08:00",
+                "Temperature": "22"
+              },
+              {
+                "DataTime": "2026-05-06T04:00:00+08:00",
+                "Temperature": "22"
+              },
+              {
+                "DataTime": "2026-05-06T05:00:00+08:00",
+                "Temperature": "22"
+              },
+              {
+                "DataTime": "2026-05-06T06:00:00+08:00",
+                "Temperature": "22"
+              },
+              {
+                "DataTime": "2026-05-06T07:00:00+08:00",
+                "Temperature": "22"
+              },
+              {
+                "DataTime": "2026-05-06T08:00:00+08:00",
+                "Temperature": "24"
+              },
+              {
+                "DataTime": "2026-05-06T09:00:00+08:00",
+                "Temperature": "25"
+              },
+              {
+                "DataTime": "2026-05-06T10:00:00+08:00",
+                "Temperature": "26"
+              },
+              {
+                "DataTime": "2026-05-06T11:00:00+08:00",
+                "Temperature": "28"
+              }
+            ]
+          },
+          "Weather": {
+            "Time": [
+              {
+                "StartTime": "2026-05-05T06:00:00+08:00",
+                "EndTime": "2026-05-05T09:00:00+08:00",
+                "Weather": "短暫陣雨",
+                "WeatherCode": "08"
+              },
+              {
+                "StartTime": "2026-05-05T09:00:00+08:00",
+                "EndTime": "2026-05-05T12:00:00+08:00",
+                "Weather": "短暫陣雨",
+                "WeatherCode": "08"
+              },
+              {
+                "StartTime": "2026-05-05T12:00:00+08:00",
+                "EndTime": "2026-05-05T15:00:00+08:00",
+                "Weather": "短暫陣雨",
+                "WeatherCode": "08"
+              },
+              {
+                "StartTime": "2026-05-05T15:00:00+08:00",
+                "EndTime": "2026-05-05T18:00:00+08:00",
+                "Weather": "短暫陣雨",
+                "WeatherCode": "08"
+              },
+              {
+                "StartTime": "2026-05-05T18:00:00+08:00",
+                "EndTime": "2026-05-05T21:00:00+08:00",
+                "Weather": "短暫陣雨",
+                "WeatherCode": "08"
+              },
+              {
+                "StartTime": "2026-05-05T21:00:00+08:00",
+                "EndTime": "2026-05-06T00:00:00+08:00",
+                "Weather": "短暫陣雨",
+                "WeatherCode": "08"
+              },
+              {
+                "StartTime": "2026-05-06T00:00:00+08:00",
+                "EndTime": "2026-05-06T03:00:00+08:00",
+                "Weather": "短暫陣雨",
+                "WeatherCode": "08"
+              },
+              {
+                "StartTime": "2026-05-06T03:00:00+08:00",
+                "EndTime": "2026-05-06T06:00:00+08:00",
+                "Weather": "晴",
+                "WeatherCode": "01"
+              },
+              {
+                "StartTime": "2026-05-06T06:00:00+08:00",
+                "EndTime": "2026-05-06T09:00:00+08:00",
+                "Weather": "晴",
+                "WeatherCode": "01"
+              },
+              {
+                "StartTime": "2026-05-06T09:00:00+08:00",
+                "EndTime": "2026-05-06T12:00:00+08:00",
+                "Weather": "晴",
+                "WeatherCode": "01"
+              },
+              {
+                "StartTime": "2026-05-06T12:00:00+08:00",
+                "EndTime": "2026-05-06T15:00:00+08:00",
+                "Weather": "多雲",
+                "WeatherCode": "04"
+              },
+              {
+                "StartTime": "2026-05-06T15:00:00+08:00",
+                "EndTime": "2026-05-06T18:00:00+08:00",
+                "Weather": "晴",
+                "WeatherCode": "01"
+              }
+            ]
+          }
+        },
+        "forecastWeekday": {
+          "MinTemperature": {
+            "Time": [
+              {
+                "StartTime": "2026-05-05T06:00:00+08:00",
+                "MinTemperature": "21"
+              },
+              {
+                "StartTime": "2026-05-05T18:00:00+08:00",
+                "MinTemperature": "22"
+              },
+              {
+                "StartTime": "2026-05-06T06:00:00+08:00",
+                "MinTemperature": "22"
+              },
+              {
+                "StartTime": "2026-05-06T18:00:00+08:00",
+                "MinTemperature": "23"
+              },
+              {
+                "StartTime": "2026-05-07T06:00:00+08:00",
+                "MinTemperature": "23"
+              },
+              {
+                "StartTime": "2026-05-07T18:00:00+08:00",
+                "MinTemperature": "24"
+              },
+              {
+                "StartTime": "2026-05-08T06:00:00+08:00",
+                "MinTemperature": "24"
+              },
+              {
+                "StartTime": "2026-05-08T18:00:00+08:00",
+                "MinTemperature": "22"
+              },
+              {
+                "StartTime": "2026-05-09T06:00:00+08:00",
+                "MinTemperature": "22"
+              },
+              {
+                "StartTime": "2026-05-09T18:00:00+08:00",
+                "MinTemperature": "22"
+              },
+              {
+                "StartTime": "2026-05-10T06:00:00+08:00",
+                "MinTemperature": "22"
+              },
+              {
+                "StartTime": "2026-05-10T18:00:00+08:00",
+                "MinTemperature": "23"
+              },
+              {
+                "StartTime": "2026-05-11T06:00:00+08:00",
+                "MinTemperature": "23"
+              },
+              {
+                "StartTime": "2026-05-11T18:00:00+08:00",
+                "MinTemperature": "23"
+              }
+            ]
+          },
+          "MaxTemperature": {
+            "Time": [
+              {
+                "StartTime": "2026-05-05T06:00:00+08:00",
+                "MaxTemperature": "24"
+              },
+              {
+                "StartTime": "2026-05-05T18:00:00+08:00",
+                "MaxTemperature": "23"
+              },
+              {
+                "StartTime": "2026-05-06T06:00:00+08:00",
+                "MaxTemperature": "29"
+              },
+              {
+                "StartTime": "2026-05-06T18:00:00+08:00",
+                "MaxTemperature": "27"
+              },
+              {
+                "StartTime": "2026-05-07T06:00:00+08:00",
+                "MaxTemperature": "30"
+              },
+              {
+                "StartTime": "2026-05-07T18:00:00+08:00",
+                "MaxTemperature": "28"
+              },
+              {
+                "StartTime": "2026-05-08T06:00:00+08:00",
+                "MaxTemperature": "29"
+              },
+              {
+                "StartTime": "2026-05-08T18:00:00+08:00",
+                "MaxTemperature": "27"
+              },
+              {
+                "StartTime": "2026-05-09T06:00:00+08:00",
+                "MaxTemperature": "28"
+              },
+              {
+                "StartTime": "2026-05-09T18:00:00+08:00",
+                "MaxTemperature": "26"
+              },
+              {
+                "StartTime": "2026-05-10T06:00:00+08:00",
+                "MaxTemperature": "30"
+              },
+              {
+                "StartTime": "2026-05-10T18:00:00+08:00",
+                "MaxTemperature": "27"
+              },
+              {
+                "StartTime": "2026-05-11T06:00:00+08:00",
+                "MaxTemperature": "29"
+              },
+              {
+                "StartTime": "2026-05-11T18:00:00+08:00",
+                "MaxTemperature": "27"
+              }
+            ]
+          },
+          "ProbabilityOfPrecipitation": {
+            "Time": [
+              {
+                "StartTime": "2026-05-05T06:00:00+08:00",
+                "ProbabilityOfPrecipitation": "40"
+              },
+              {
+                "StartTime": "2026-05-05T18:00:00+08:00",
+                "ProbabilityOfPrecipitation": "30"
+              },
+              {
+                "StartTime": "2026-05-06T06:00:00+08:00",
+                "ProbabilityOfPrecipitation": "20"
+              },
+              {
+                "StartTime": "2026-05-06T18:00:00+08:00",
+                "ProbabilityOfPrecipitation": "0"
+              },
+              {
+                "StartTime": "2026-05-07T06:00:00+08:00",
+                "ProbabilityOfPrecipitation": "0"
+              },
+              {
+                "StartTime": "2026-05-07T18:00:00+08:00",
+                "ProbabilityOfPrecipitation": "10"
+              },
+              {
+                "StartTime": "2026-05-08T06:00:00+08:00",
+                "ProbabilityOfPrecipitation": "-"
+              },
+              {
+                "StartTime": "2026-05-08T18:00:00+08:00",
+                "ProbabilityOfPrecipitation": "-"
+              },
+              {
+                "StartTime": "2026-05-09T06:00:00+08:00",
+                "ProbabilityOfPrecipitation": "-"
+              },
+              {
+                "StartTime": "2026-05-09T18:00:00+08:00",
+                "ProbabilityOfPrecipitation": "-"
+              },
+              {
+                "StartTime": "2026-05-10T06:00:00+08:00",
+                "ProbabilityOfPrecipitation": "-"
+              },
+              {
+                "StartTime": "2026-05-10T18:00:00+08:00",
+                "ProbabilityOfPrecipitation": "-"
+              },
+              {
+                "StartTime": "2026-05-11T06:00:00+08:00",
+                "ProbabilityOfPrecipitation": "-"
+              },
+              {
+                "StartTime": "2026-05-11T18:00:00+08:00",
+                "ProbabilityOfPrecipitation": "-"
+              }
+            ]
+          },
+          "UVIndex": {
+            "Time": [
+              {
+                "StartTime": "2026-05-05T06:00:00+08:00",
+                "UVIndex": "3",
+                "UVExposureLevel": "中量級"
+              }
+            ]
+          },
+          "Weather": {
+            "Time": [
+              {
+                "StartTime": "2026-05-05T06:00:00+08:00",
+                "Weather": "陰短暫陣雨",
+                "WeatherCode": "11"
+              },
+              {
+                "StartTime": "2026-05-05T18:00:00+08:00",
+                "Weather": "陰時多雲短暫陣雨",
+                "WeatherCode": "10"
+              },
+              {
+                "StartTime": "2026-05-06T06:00:00+08:00",
+                "Weather": "晴時多雲",
+                "WeatherCode": "02"
+              },
+              {
+                "StartTime": "2026-05-06T18:00:00+08:00",
+                "Weather": "晴時多雲",
+                "WeatherCode": "02"
+              },
+              {
+                "StartTime": "2026-05-07T06:00:00+08:00",
+                "Weather": "晴時多雲",
+                "WeatherCode": "02"
+              },
+              {
+                "StartTime": "2026-05-07T18:00:00+08:00",
+                "Weather": "晴時多雲",
+                "WeatherCode": "02"
+              },
+              {
+                "StartTime": "2026-05-08T06:00:00+08:00",
+                "Weather": "陰時多雲短暫陣雨或雷雨",
+                "WeatherCode": "17"
+              },
+              {
+                "StartTime": "2026-05-08T18:00:00+08:00",
+                "Weather": "陰短暫陣雨或雷雨",
+                "WeatherCode": "18"
+              },
+              {
+                "StartTime": "2026-05-09T06:00:00+08:00",
+                "Weather": "晴時多雲",
+                "WeatherCode": "02"
+              },
+              {
+                "StartTime": "2026-05-09T18:00:00+08:00",
+                "Weather": "晴時多雲",
+                "WeatherCode": "02"
+              },
+              {
+                "StartTime": "2026-05-10T06:00:00+08:00",
+                "Weather": "晴時多雲",
+                "WeatherCode": "02"
+              },
+              {
+                "StartTime": "2026-05-10T18:00:00+08:00",
+                "Weather": "晴時多雲",
+                "WeatherCode": "02"
+              },
+              {
+                "StartTime": "2026-05-11T06:00:00+08:00",
+                "Weather": "多雲時晴",
+                "WeatherCode": "03"
+              },
+              {
+                "StartTime": "2026-05-11T18:00:00+08:00",
+                "Weather": "晴時多雲",
+                "WeatherCode": "02"
+              }
+            ]
+          }
+        },
+        "station": [
+          {
+            "GeoInfo": {
+              "Coordinates": [
+                {
+                  "StationLatitude": "24.043658",
+                  "StationLongitude": "120.691323"
+                },
+                {
+                  "StationLatitude": "24.041897",
+                  "StationLongitude": "120.699472"
+                }
+              ]
+            },
+            "WeatherElement": {
+              "Weather": "陰",
+              "Now": {
+                "Precipitation": "0.5"
+              },
+              "AirTemperature": "21.5",
+              "RelativeHumidity": "96",
+              "DailyExtreme": {
+                "DailyHigh": {
+                  "TemperatureInfo": {
+                    "AirTemperature": "21.6"
+                  }
+                },
+                "DailyLow": {
+                  "TemperatureInfo": {
+                    "AirTemperature": "20.8"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "GeoInfo": {
+              "Coordinates": [
+                {
+                  "StationLatitude": "24.033022",
+                  "StationLongitude": "120.679986"
+                },
+                {
+                  "StationLatitude": "24.031261",
+                  "StationLongitude": "120.688133"
+                }
+              ]
+            },
+            "WeatherElement": {
+              "Weather": "-99",
+              "Now": {
+                "Precipitation": "0.5"
+              },
+              "AirTemperature": "22.1",
+              "RelativeHumidity": "95",
+              "DailyExtreme": {
+                "DailyHigh": {
+                  "TemperatureInfo": {
+                    "AirTemperature": "22.4"
+                  }
+                },
+                "DailyLow": {
+                  "TemperatureInfo": {
+                    "AirTemperature": "21.3"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "GeoInfo": {
+              "Coordinates": [
+                {
+                  "StationLatitude": "24.094389",
+                  "StationLongitude": "120.692194"
+                },
+                {
+                  "StationLatitude": "24.092464",
+                  "StationLongitude": "120.701378"
+                }
+              ]
+            },
+            "WeatherElement": {
+              "Weather": "陰",
+              "Now": {
+                "Precipitation": "0.5"
+              },
+              "AirTemperature": "21.3",
+              "RelativeHumidity": "96",
+              "DailyExtreme": {
+                "DailyHigh": {
+                  "TemperatureInfo": {
+                    "AirTemperature": "22.0"
+                  }
+                },
+                "DailyLow": {
+                  "TemperatureInfo": {
+                    "AirTemperature": "21.3"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "GeoInfo": {
+              "Coordinates": [
+                {
+                  "StationLatitude": "24.108833",
+                  "StationLongitude": "120.615917"
+                },
+                {
+                  "StationLatitude": "24.107058",
+                  "StationLongitude": "120.624103"
+                }
+              ]
+            },
+            "WeatherElement": {
+              "Weather": "陰",
+              "Now": {
+                "Precipitation": "0.5"
+              },
+              "AirTemperature": "21.1",
+              "RelativeHumidity": "92",
+              "DailyExtreme": {
+                "DailyHigh": {
+                  "TemperatureInfo": {
+                    "AirTemperature": "22.0"
+                  }
+                },
+                "DailyLow": {
+                  "TemperatureInfo": {
+                    "AirTemperature": "20.7"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "GeoInfo": {
+              "Coordinates": [
+                {
+                  "StationLatitude": "24.067905",
+                  "StationLongitude": "120.652763"
+                },
+                {
+                  "StationLatitude": "24.066147",
+                  "StationLongitude": "120.660919"
+                }
+              ]
+            },
+            "WeatherElement": {
+              "Weather": "-99",
+              "Now": {
+                "Precipitation": "0.0"
+              },
+              "AirTemperature": "20.2",
+              "RelativeHumidity": "99",
+              "DailyExtreme": {
+                "DailyHigh": {
+                  "TemperatureInfo": {
+                    "AirTemperature": "21.2"
+                  }
+                },
+                "DailyLow": {
+                  "TemperatureInfo": {
+                    "AirTemperature": "19.7"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "GeoInfo": {
+              "Coordinates": [
+                {
+                  "StationLatitude": "24.105556",
+                  "StationLongitude": "120.743333"
+                },
+                {
+                  "StationLatitude": "24.103556",
+                  "StationLongitude": "120.751061"
+                }
+              ]
+            },
+            "WeatherElement": {
+              "Weather": "-99",
+              "Now": {
+                "Precipitation": "0.5"
+              },
+              "AirTemperature": "20.2",
+              "RelativeHumidity": "100",
+              "DailyExtreme": {
+                "DailyHigh": {
+                  "TemperatureInfo": {
+                    "AirTemperature": "20.3"
+                  }
+                },
+                "DailyLow": {
+                  "TemperatureInfo": {
+                    "AirTemperature": "19.7"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "GeoInfo": {
+              "Coordinates": [
+                {
+                  "StationLatitude": "24.138861",
+                  "StationLongitude": "120.630111"
+                },
+                {
+                  "StationLatitude": "24.137006",
+                  "StationLongitude": "120.637969"
+                }
+              ]
+            },
+            "WeatherElement": {
+              "Weather": "陰",
+              "Now": {
+                "Precipitation": "0.5"
+              },
+              "AirTemperature": "21.5",
+              "RelativeHumidity": "93",
+              "DailyExtreme": {
+                "DailyHigh": {
+                  "TemperatureInfo": {
+                    "AirTemperature": "21.9"
+                  }
+                },
+                "DailyLow": {
+                  "TemperatureInfo": {
+                    "AirTemperature": "21.2"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "GeoInfo": {
+              "Coordinates": [
+                {
+                  "StationLatitude": "24.147494",
+                  "StationLongitude": "120.675919"
+                },
+                {
+                  "StationLatitude": "24.145736",
+                  "StationLongitude": "120.684075"
+                }
+              ]
+            },
+            "WeatherElement": {
+              "Weather": "-99",
+              "Now": {
+                "Precipitation": "0.5"
+              },
+              "AirTemperature": "22.1",
+              "RelativeHumidity": "92",
+              "DailyExtreme": {
+                "DailyHigh": {
+                  "TemperatureInfo": {
+                    "AirTemperature": "22.2"
+                  }
+                },
+                "DailyLow": {
+                  "TemperatureInfo": {
+                    "AirTemperature": "21.0"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "GeoInfo": {
+              "Coordinates": [
+                {
+                  "StationLatitude": "24.154667",
+                  "StationLongitude": "120.564"
+                },
+                {
+                  "StationLatitude": "24.15295",
+                  "StationLongitude": "120.572117"
+                }
+              ]
+            },
+            "WeatherElement": {
+              "Weather": "-99",
+              "Now": {
+                "Precipitation": "0.0"
+              },
+              "AirTemperature": "19.6",
+              "RelativeHumidity": "100",
+              "DailyExtreme": {
+                "DailyHigh": {
+                  "TemperatureInfo": {
+                    "AirTemperature": "20.1"
+                  }
+                },
+                "DailyLow": {
+                  "TemperatureInfo": {
+                    "AirTemperature": "19.2"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "GeoInfo": {
+              "Coordinates": [
+                {
+                  "StationLatitude": "24.120299",
+                  "StationLongitude": "120.577587"
+                },
+                {
+                  "StationLatitude": "24.118546",
+                  "StationLongitude": "120.585747"
+                }
+              ]
+            },
+            "WeatherElement": {
+              "Weather": "-99",
+              "Now": {
+                "Precipitation": "0.5"
+              },
+              "AirTemperature": "20.6",
+              "RelativeHumidity": "90",
+              "DailyExtreme": {
+                "DailyHigh": {
+                  "TemperatureInfo": {
+                    "AirTemperature": "21.1"
+                  }
+                },
+                "DailyLow": {
+                  "TemperatureInfo": {
+                    "AirTemperature": "19.2"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "GeoInfo": {
+              "Coordinates": [
+                {
+                  "StationLatitude": "24.182028",
+                  "StationLongitude": "120.632861"
+                },
+                {
+                  "StationLatitude": "24.179494",
+                  "StationLongitude": "120.641275"
+                }
+              ]
+            },
+            "WeatherElement": {
+              "Weather": "陰",
+              "Now": {
+                "Precipitation": "0.5"
+              },
+              "AirTemperature": "21.2",
+              "RelativeHumidity": "92",
+              "DailyExtreme": {
+                "DailyHigh": {
+                  "TemperatureInfo": {
+                    "AirTemperature": "21.4"
+                  }
+                },
+                "DailyLow": {
+                  "TemperatureInfo": {
+                    "AirTemperature": "20.2"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "GeoInfo": {
+              "Coordinates": [
+                {
+                  "StationLatitude": "24.174889",
+                  "StationLongitude": "120.714139"
+                },
+                {
+                  "StationLatitude": "24.173142",
+                  "StationLongitude": "120.722289"
+                }
+              ]
+            },
+            "WeatherElement": {
+              "Weather": "陰",
+              "Now": {
+                "Precipitation": "1.0"
+              },
+              "AirTemperature": "23.6",
+              "RelativeHumidity": "92",
+              "DailyExtreme": {
+                "DailyHigh": {
+                  "TemperatureInfo": {
+                    "AirTemperature": "23.7"
+                  }
+                },
+                "DailyLow": {
+                  "TemperatureInfo": {
+                    "AirTemperature": "22.5"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "GeoInfo": {
+              "Coordinates": [
+                {
+                  "StationLatitude": "24.216388",
+                  "StationLongitude": "120.482584"
+                },
+                {
+                  "StationLatitude": "24.214641",
+                  "StationLongitude": "120.490744"
+                }
+              ]
+            },
+            "WeatherElement": {
+              "Weather": "陰有雨",
+              "Now": {
+                "Precipitation": "0.5"
+              },
+              "AirTemperature": "21.0",
+              "RelativeHumidity": "93",
+              "DailyExtreme": {
+                "DailyHigh": {
+                  "TemperatureInfo": {
+                    "AirTemperature": "21.4"
+                  }
+                },
+                "DailyLow": {
+                  "TemperatureInfo": {
+                    "AirTemperature": "19.0"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "GeoInfo": {
+              "Coordinates": [
+                {
+                  "StationLatitude": "24.186278",
+                  "StationLongitude": "120.520833"
+                },
+                {
+                  "StationLatitude": "24.184536",
+                  "StationLongitude": "120.528972"
+                }
+              ]
+            },
+            "WeatherElement": {
+              "Weather": "陰",
+              "Now": {
+                "Precipitation": "0.5"
+              },
+              "AirTemperature": "20.9",
+              "RelativeHumidity": "93",
+              "DailyExtreme": {
+                "DailyHigh": {
+                  "TemperatureInfo": {
+                    "AirTemperature": "20.9"
+                  }
+                },
+                "DailyLow": {
+                  "TemperatureInfo": {
+                    "AirTemperature": "19.2"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "GeoInfo": {
+              "Coordinates": [
+                {
+                  "StationLatitude": "24.19538",
+                  "StationLongitude": "120.562148"
+                },
+                {
+                  "StationLatitude": "24.193628",
+                  "StationLongitude": "120.570311"
+                }
+              ]
+            },
+            "WeatherElement": {
+              "Weather": "-99",
+              "Now": {
+                "Precipitation": "0.0"
+              },
+              "AirTemperature": "19.8",
+              "RelativeHumidity": "93",
+              "DailyExtreme": {
+                "DailyHigh": {
+                  "TemperatureInfo": {
+                    "AirTemperature": "21.0"
+                  }
+                },
+                "DailyLow": {
+                  "TemperatureInfo": {
+                    "AirTemperature": "19.2"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "GeoInfo": {
+              "Coordinates": [
+                {
+                  "StationLatitude": "24.21475",
+                  "StationLongitude": "120.695833"
+                },
+                {
+                  "StationLatitude": "24.213106",
+                  "StationLongitude": "120.703933"
+                }
+              ]
+            },
+            "WeatherElement": {
+              "Weather": "陰",
+              "Now": {
+                "Precipitation": "0.0"
+              },
+              "AirTemperature": "20.8",
+              "RelativeHumidity": "93",
+              "DailyExtreme": {
+                "DailyHigh": {
+                  "TemperatureInfo": {
+                    "AirTemperature": "21.9"
+                  }
+                },
+                "DailyLow": {
+                  "TemperatureInfo": {
+                    "AirTemperature": "20.8"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "GeoInfo": {
+              "Coordinates": [
+                {
+                  "StationLatitude": "24.217056",
+                  "StationLongitude": "120.616239"
+                },
+                {
+                  "StationLatitude": "24.215281",
+                  "StationLongitude": "120.62445"
+                }
+              ]
+            },
+            "WeatherElement": {
+              "Weather": "陰有雨",
+              "Now": {
+                "Precipitation": "0.5"
+              },
+              "AirTemperature": "20.3",
+              "RelativeHumidity": "96",
+              "DailyExtreme": {
+                "DailyHigh": {
+                  "TemperatureInfo": {
+                    "AirTemperature": "21.2"
+                  }
+                },
+                "DailyLow": {
+                  "TemperatureInfo": {
+                    "AirTemperature": "19.2"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "GeoInfo": {
+              "Coordinates": [
+                {
+                  "StationLatitude": "24.206657",
+                  "StationLongitude": "120.647035"
+                },
+                {
+                  "StationLatitude": "24.2049",
+                  "StationLongitude": "120.6552"
+                }
+              ]
+            },
+            "WeatherElement": {
+              "Weather": "-99",
+              "Now": {
+                "Precipitation": "0.5"
+              },
+              "AirTemperature": "20.1",
+              "RelativeHumidity": "98",
+              "DailyExtreme": {
+                "DailyHigh": {
+                  "TemperatureInfo": {
+                    "AirTemperature": "20.8"
+                  }
+                },
+                "DailyLow": {
+                  "TemperatureInfo": {
+                    "AirTemperature": "18.8"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "GeoInfo": {
+              "Coordinates": [
+                {
+                  "StationLatitude": "24.253246",
+                  "StationLongitude": "120.58152"
+                },
+                {
+                  "StationLatitude": "24.251494",
+                  "StationLongitude": "120.589683"
+                }
+              ]
+            },
+            "WeatherElement": {
+              "Weather": "-99",
+              "Now": {
+                "Precipitation": "0.5"
+              },
+              "AirTemperature": "19.8",
+              "RelativeHumidity": "91",
+              "DailyExtreme": {
+                "DailyHigh": {
+                  "TemperatureInfo": {
+                    "AirTemperature": "21.0"
+                  }
+                },
+                "DailyLow": {
+                  "TemperatureInfo": {
+                    "AirTemperature": "18.8"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "GeoInfo": {
+              "Coordinates": [
+                {
+                  "StationLatitude": "24.201583",
+                  "StationLongitude": "120.8075"
+                },
+                {
+                  "StationLatitude": "24.200172",
+                  "StationLongitude": "120.815806"
+                }
+              ]
+            },
+            "WeatherElement": {
+              "Weather": "陰有雨",
+              "Now": {
+                "Precipitation": "1.0"
+              },
+              "AirTemperature": "20.7",
+              "RelativeHumidity": "99",
+              "DailyExtreme": {
+                "DailyHigh": {
+                  "TemperatureInfo": {
+                    "AirTemperature": "21.0"
+                  }
+                },
+                "DailyLow": {
+                  "TemperatureInfo": {
+                    "AirTemperature": "20.2"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "GeoInfo": {
+              "Coordinates": [
+                {
+                  "StationLatitude": "24.227737",
+                  "StationLongitude": "120.792753"
+                },
+                {
+                  "StationLatitude": "24.225972",
+                  "StationLongitude": "120.800917"
+                }
+              ]
+            },
+            "WeatherElement": {
+              "Weather": "-99",
+              "Now": {
+                "Precipitation": "0.5"
+              },
+              "AirTemperature": "20.6",
+              "RelativeHumidity": "93",
+              "DailyExtreme": {
+                "DailyHigh": {
+                  "TemperatureInfo": {
+                    "AirTemperature": "20.7"
+                  }
+                },
+                "DailyLow": {
+                  "TemperatureInfo": {
+                    "AirTemperature": "20.0"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "GeoInfo": {
+              "Coordinates": [
+                {
+                  "StationLatitude": "24.131608",
+                  "StationLongitude": "120.850769"
+                },
+                {
+                  "StationLatitude": "24.129842",
+                  "StationLongitude": "120.858925"
+                }
+              ]
+            },
+            "WeatherElement": {
+              "Weather": "-99",
+              "Now": {
+                "Precipitation": "1.0"
+              },
+              "AirTemperature": "17.2",
+              "RelativeHumidity": "100",
+              "DailyExtreme": {
+                "DailyHigh": {
+                  "TemperatureInfo": {
+                    "AirTemperature": "17.3"
+                  }
+                },
+                "DailyLow": {
+                  "TemperatureInfo": {
+                    "AirTemperature": "16.8"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "GeoInfo": {
+              "Coordinates": [
+                {
+                  "StationLatitude": "24.256306",
+                  "StationLongitude": "120.712333"
+                },
+                {
+                  "StationLatitude": "24.254322",
+                  "StationLongitude": "120.720692"
+                }
+              ]
+            },
+            "WeatherElement": {
+              "Weather": "陰",
+              "Now": {
+                "Precipitation": "0.5"
+              },
+              "AirTemperature": "22.2",
+              "RelativeHumidity": "95",
+              "DailyExtreme": {
+                "DailyHigh": {
+                  "TemperatureInfo": {
+                    "AirTemperature": "24.1"
+                  }
+                },
+                "DailyLow": {
+                  "TemperatureInfo": {
+                    "AirTemperature": "22.2"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "GeoInfo": {
+              "Coordinates": [
+                {
+                  "StationLatitude": "24.277822",
+                  "StationLongitude": "120.769478"
+                },
+                {
+                  "StationLatitude": "24.276061",
+                  "StationLongitude": "120.777644"
+                }
+              ]
+            },
+            "WeatherElement": {
+              "Weather": "陰有雨",
+              "Now": {
+                "Precipitation": "0.5"
+              },
+              "AirTemperature": "21.5",
+              "RelativeHumidity": "95",
+              "DailyExtreme": {
+                "DailyHigh": {
+                  "TemperatureInfo": {
+                    "AirTemperature": "21.7"
+                  }
+                },
+                "DailyLow": {
+                  "TemperatureInfo": {
+                    "AirTemperature": "20.9"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "GeoInfo": {
+              "Coordinates": [
+                {
+                  "StationLatitude": "24.257753",
+                  "StationLongitude": "120.515211"
+                },
+                {
+                  "StationLatitude": "24.256003",
+                  "StationLongitude": "120.523381"
+                }
+              ]
+            },
+            "WeatherElement": {
+              "Weather": "-99",
+              "Now": {
+                "Precipitation": "0.5"
+              },
+              "AirTemperature": "20.6",
+              "RelativeHumidity": "98",
+              "DailyExtreme": {
+                "DailyHigh": {
+                  "TemperatureInfo": {
+                    "AirTemperature": "20.6"
+                  }
+                },
+                "DailyLow": {
+                  "TemperatureInfo": {
+                    "AirTemperature": "18.1"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "GeoInfo": {
+              "Coordinates": [
+                {
+                  "StationLatitude": "24.274222",
+                  "StationLongitude": "120.650306"
+                },
+                {
+                  "StationLatitude": "24.272481",
+                  "StationLongitude": "120.658314"
+                }
+              ]
+            },
+            "WeatherElement": {
+              "Weather": "陰",
+              "Now": {
+                "Precipitation": "0.5"
+              },
+              "AirTemperature": "19.6",
+              "RelativeHumidity": "97",
+              "DailyExtreme": {
+                "DailyHigh": {
+                  "TemperatureInfo": {
+                    "AirTemperature": "20.8"
+                  }
+                },
+                "DailyLow": {
+                  "TemperatureInfo": {
+                    "AirTemperature": "18.7"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "GeoInfo": {
+              "Coordinates": [
+                {
+                  "StationLatitude": "24.238875",
+                  "StationLongitude": "120.680105"
+                },
+                {
+                  "StationLatitude": "24.237116",
+                  "StationLongitude": "120.688271"
+                }
+              ]
+            },
+            "WeatherElement": {
+              "Weather": "-99",
+              "Now": {
+                "Precipitation": "0.0"
+              },
+              "AirTemperature": "19.8",
+              "RelativeHumidity": "100",
+              "DailyExtreme": {
+                "DailyHigh": {
+                  "TemperatureInfo": {
+                    "AirTemperature": "20.6"
+                  }
+                },
+                "DailyLow": {
+                  "TemperatureInfo": {
+                    "AirTemperature": "19.3"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "GeoInfo": {
+              "Coordinates": [
+                {
+                  "StationLatitude": "24.248194",
+                  "StationLongitude": "120.824917"
+                },
+                {
+                  "StationLatitude": "24.246428",
+                  "StationLongitude": "120.833047"
+                }
+              ]
+            },
+            "WeatherElement": {
+              "Weather": "陰",
+              "Now": {
+                "Precipitation": "0.5"
+              },
+              "AirTemperature": "-99",
+              "RelativeHumidity": "-99",
+              "DailyExtreme": {
+                "DailyHigh": {
+                  "TemperatureInfo": {
+                    "AirTemperature": "23.1"
+                  }
+                },
+                "DailyLow": {
+                  "TemperatureInfo": {
+                    "AirTemperature": "22.2"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "GeoInfo": {
+              "Coordinates": [
+                {
+                  "StationLatitude": "24.208236",
+                  "StationLongitude": "120.894632"
+                },
+                {
+                  "StationLatitude": "24.206469",
+                  "StationLongitude": "120.902794"
+                }
+              ]
+            },
+            "WeatherElement": {
+              "Weather": "-99",
+              "Now": {
+                "Precipitation": "1.0"
+              },
+              "AirTemperature": "16.5",
+              "RelativeHumidity": "99",
+              "DailyExtreme": {
+                "DailyHigh": {
+                  "TemperatureInfo": {
+                    "AirTemperature": "16.6"
+                  }
+                },
+                "DailyLow": {
+                  "TemperatureInfo": {
+                    "AirTemperature": "16.3"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "GeoInfo": {
+              "Coordinates": [
+                {
+                  "StationLatitude": "24.314028",
+                  "StationLongitude": "120.554083"
+                },
+                {
+                  "StationLatitude": "24.312297",
+                  "StationLongitude": "120.562242"
+                }
+              ]
+            },
+            "WeatherElement": {
+              "Weather": "陰有雨",
+              "Now": {
+                "Precipitation": "0.5"
+              },
+              "AirTemperature": "20.0",
+              "RelativeHumidity": "96",
+              "DailyExtreme": {
+                "DailyHigh": {
+                  "TemperatureInfo": {
+                    "AirTemperature": "20.0"
+                  }
+                },
+                "DailyLow": {
+                  "TemperatureInfo": {
+                    "AirTemperature": "18.0"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "GeoInfo": {
+              "Coordinates": [
+                {
+                  "StationLatitude": "24.310274",
+                  "StationLongitude": "120.606299"
+                },
+                {
+                  "StationLatitude": "24.308519",
+                  "StationLongitude": "120.614471"
+                }
+              ]
+            },
+            "WeatherElement": {
+              "Weather": "-99",
+              "Now": {
+                "Precipitation": "0.5"
+              },
+              "AirTemperature": "20.0",
+              "RelativeHumidity": "91",
+              "DailyExtreme": {
+                "DailyHigh": {
+                  "TemperatureInfo": {
+                    "AirTemperature": "21.1"
+                  }
+                },
+                "DailyLow": {
+                  "TemperatureInfo": {
+                    "AirTemperature": "18.6"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "GeoInfo": {
+              "Coordinates": [
+                {
+                  "StationLatitude": "24.298221",
+                  "StationLongitude": "120.634964"
+                },
+                {
+                  "StationLatitude": "24.296465",
+                  "StationLongitude": "120.643135"
+                }
+              ]
+            },
+            "WeatherElement": {
+              "Weather": "-99",
+              "Now": {
+                "Precipitation": "0.0"
+              },
+              "AirTemperature": "19.5",
+              "RelativeHumidity": "100",
+              "DailyExtreme": {
+                "DailyHigh": {
+                  "TemperatureInfo": {
+                    "AirTemperature": "20.8"
+                  }
+                },
+                "DailyLow": {
+                  "TemperatureInfo": {
+                    "AirTemperature": "18.5"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "GeoInfo": {
+              "Coordinates": [
+                {
+                  "StationLatitude": "24.277713",
+                  "StationLongitude": "120.539516"
+                },
+                {
+                  "StationLatitude": "24.275964",
+                  "StationLongitude": "120.547681"
+                }
+              ]
+            },
+            "WeatherElement": {
+              "Weather": "-99",
+              "Now": {
+                "Precipitation": "0.0"
+              },
+              "AirTemperature": "20.4",
+              "RelativeHumidity": "96",
+              "DailyExtreme": {
+                "DailyHigh": {
+                  "TemperatureInfo": {
+                    "AirTemperature": "20.5"
+                  }
+                },
+                "DailyLow": {
+                  "TemperatureInfo": {
+                    "AirTemperature": "17.9"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "GeoInfo": {
+              "Coordinates": [
+                {
+                  "StationLatitude": "24.312111",
+                  "StationLongitude": "120.7215"
+                },
+                {
+                  "StationLatitude": "24.310436",
+                  "StationLongitude": "120.729725"
+                }
+              ]
+            },
+            "WeatherElement": {
+              "Weather": "陰",
+              "Now": {
+                "Precipitation": "0.5"
+              },
+              "AirTemperature": "20.5",
+              "RelativeHumidity": "99",
+              "DailyExtreme": {
+                "DailyHigh": {
+                  "TemperatureInfo": {
+                    "AirTemperature": "21.9"
+                  }
+                },
+                "DailyLow": {
+                  "TemperatureInfo": {
+                    "AirTemperature": "19.8"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "GeoInfo": {
+              "Coordinates": [
+                {
+                  "StationLatitude": "24.297293",
+                  "StationLongitude": "120.687806"
+                },
+                {
+                  "StationLatitude": "24.295534",
+                  "StationLongitude": "120.695976"
+                }
+              ]
+            },
+            "WeatherElement": {
+              "Weather": "-99",
+              "Now": {
+                "Precipitation": "0.5"
+              },
+              "AirTemperature": "19.3",
+              "RelativeHumidity": "93",
+              "DailyExtreme": {
+                "DailyHigh": {
+                  "TemperatureInfo": {
+                    "AirTemperature": "20.7"
+                  }
+                },
+                "DailyLow": {
+                  "TemperatureInfo": {
+                    "AirTemperature": "19.0"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "GeoInfo": {
+              "Coordinates": [
+                {
+                  "StationLatitude": "24.349556",
+                  "StationLongitude": "120.697472"
+                },
+                {
+                  "StationLatitude": "24.347817",
+                  "StationLongitude": "120.705686"
+                }
+              ]
+            },
+            "WeatherElement": {
+              "Weather": "陰",
+              "Now": {
+                "Precipitation": "-99"
+              },
+              "AirTemperature": "-99",
+              "RelativeHumidity": "-99",
+              "DailyExtreme": {
+                "DailyHigh": {
+                  "TemperatureInfo": {
+                    "AirTemperature": "21.8"
+                  }
+                },
+                "DailyLow": {
+                  "TemperatureInfo": {
+                    "AirTemperature": "20.2"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "GeoInfo": {
+              "Coordinates": [
+                {
+                  "StationLatitude": "24.334121",
+                  "StationLongitude": "120.708967"
+                },
+                {
+                  "StationLatitude": "24.332372",
+                  "StationLongitude": "120.717144"
+                }
+              ]
+            },
+            "WeatherElement": {
+              "Weather": "-99",
+              "Now": {
+                "Precipitation": "0.5"
+              },
+              "AirTemperature": "18.8",
+              "RelativeHumidity": "100",
+              "DailyExtreme": {
+                "DailyHigh": {
+                  "TemperatureInfo": {
+                    "AirTemperature": "20.3"
+                  }
+                },
+                "DailyLow": {
+                  "TemperatureInfo": {
+                    "AirTemperature": "18.2"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "GeoInfo": {
+              "Coordinates": [
+                {
+                  "StationLatitude": "24.372375",
+                  "StationLongitude": "120.611895"
+                },
+                {
+                  "StationLatitude": "24.370625",
+                  "StationLongitude": "120.620067"
+                }
+              ]
+            },
+            "WeatherElement": {
+              "Weather": "陰",
+              "Now": {
+                "Precipitation": "0.5"
+              },
+              "AirTemperature": "20.0",
+              "RelativeHumidity": "95",
+              "DailyExtreme": {
+                "DailyHigh": {
+                  "TemperatureInfo": {
+                    "AirTemperature": "20.0"
+                  }
+                },
+                "DailyLow": {
+                  "TemperatureInfo": {
+                    "AirTemperature": "17.8"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "GeoInfo": {
+              "Coordinates": [
+                {
+                  "StationLatitude": "24.347444",
+                  "StationLongitude": "120.579972"
+                },
+                {
+                  "StationLatitude": "24.345061",
+                  "StationLongitude": "120.588025"
+                }
+              ]
+            },
+            "WeatherElement": {
+              "Weather": "陰有雨",
+              "Now": {
+                "Precipitation": "0.5"
+              },
+              "AirTemperature": "19.8",
+              "RelativeHumidity": "97",
+              "DailyExtreme": {
+                "DailyHigh": {
+                  "TemperatureInfo": {
+                    "AirTemperature": "19.8"
+                  }
+                },
+                "DailyLow": {
+                  "TemperatureInfo": {
+                    "AirTemperature": "17.7"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "GeoInfo": {
+              "Coordinates": [
+                {
+                  "StationLatitude": "24.349917",
+                  "StationLongitude": "120.632361"
+                },
+                {
+                  "StationLatitude": "24.347667",
+                  "StationLongitude": "120.640403"
+                }
+              ]
+            },
+            "WeatherElement": {
+              "Weather": "-99",
+              "Now": {
+                "Precipitation": "0.0"
+              },
+              "AirTemperature": "19.8",
+              "RelativeHumidity": "99",
+              "DailyExtreme": {
+                "DailyHigh": {
+                  "TemperatureInfo": {
+                    "AirTemperature": "20.1"
+                  }
+                },
+                "DailyLow": {
+                  "TemperatureInfo": {
+                    "AirTemperature": "18.3"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "GeoInfo": {
+              "Coordinates": [
+                {
+                  "StationLatitude": "24.399738",
+                  "StationLongitude": "120.66131"
+                },
+                {
+                  "StationLatitude": "24.39798",
+                  "StationLongitude": "120.669487"
+                }
+              ]
+            },
+            "WeatherElement": {
+              "Weather": "-99",
+              "Now": {
+                "Precipitation": "0.5"
+              },
+              "AirTemperature": "19.5",
+              "RelativeHumidity": "98",
+              "DailyExtreme": {
+                "DailyHigh": {
+                  "TemperatureInfo": {
+                    "AirTemperature": "19.5"
+                  }
+                },
+                "DailyLow": {
+                  "TemperatureInfo": {
+                    "AirTemperature": "18.3"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "GeoInfo": {
+              "Coordinates": [
+                {
+                  "StationLatitude": "24.2681",
+                  "StationLongitude": "120.9926"
+                },
+                {
+                  "StationLatitude": "24.267064",
+                  "StationLongitude": "121.000793"
+                }
+              ]
+            },
+            "WeatherElement": {
+              "Weather": "陰有雨",
+              "Now": {
+                "Precipitation": "5.0"
+              },
+              "AirTemperature": "11.8",
+              "RelativeHumidity": "97",
+              "DailyExtreme": {
+                "DailyHigh": {
+                  "TemperatureInfo": {
+                    "AirTemperature": "12.1"
+                  }
+                },
+                "DailyLow": {
+                  "TemperatureInfo": {
+                    "AirTemperature": "11.7"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "GeoInfo": {
+              "Coordinates": [
+                {
+                  "StationLatitude": "24.2744",
+                  "StationLongitude": "121.0224"
+                },
+                {
+                  "StationLatitude": "24.26867",
+                  "StationLongitude": "121.03062"
+                }
+              ]
+            },
+            "WeatherElement": {
+              "Weather": "陰有雨",
+              "Now": {
+                "Precipitation": "6.5"
+              },
+              "AirTemperature": "9.7",
+              "RelativeHumidity": "99",
+              "DailyExtreme": {
+                "DailyHigh": {
+                  "TemperatureInfo": {
+                    "AirTemperature": "9.8"
+                  }
+                },
+                "DailyLow": {
+                  "TemperatureInfo": {
+                    "AirTemperature": "9.6"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "GeoInfo": {
+              "Coordinates": [
+                {
+                  "StationLatitude": "24.2825",
+                  "StationLongitude": "121.0182"
+                },
+                {
+                  "StationLatitude": "24.28025",
+                  "StationLongitude": "121.02627"
+                }
+              ]
+            },
+            "WeatherElement": {
+              "Weather": "陰有雨",
+              "Now": {
+                "Precipitation": "4.5"
+              },
+              "AirTemperature": "8.2",
+              "RelativeHumidity": "94",
+              "DailyExtreme": {
+                "DailyHigh": {
+                  "TemperatureInfo": {
+                    "AirTemperature": "8.5"
+                  }
+                },
+                "DailyLow": {
+                  "TemperatureInfo": {
+                    "AirTemperature": "8.0"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "GeoInfo": {
+              "Coordinates": [
+                {
+                  "StationLatitude": "24.2968",
+                  "StationLongitude": "121.0283"
+                },
+                {
+                  "StationLatitude": "24.29515",
+                  "StationLongitude": "121.03651"
+                }
+              ]
+            },
+            "WeatherElement": {
+              "Weather": "陰有雨",
+              "Now": {
+                "Precipitation": "3.5"
+              },
+              "AirTemperature": "8.5",
+              "RelativeHumidity": "96",
+              "DailyExtreme": {
+                "DailyHigh": {
+                  "TemperatureInfo": {
+                    "AirTemperature": "8.8"
+                  }
+                },
+                "DailyLow": {
+                  "TemperatureInfo": {
+                    "AirTemperature": "7.9"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "GeoInfo": {
+              "Coordinates": [
+                {
+                  "StationLatitude": "24.2562",
+                  "StationLongitude": "120.9991"
+                },
+                {
+                  "StationLatitude": "24.254668",
+                  "StationLongitude": "121.007374"
+                }
+              ]
+            },
+            "WeatherElement": {
+              "Weather": "陰有雨",
+              "Now": {
+                "Precipitation": "5.5"
+              },
+              "AirTemperature": "12.0",
+              "RelativeHumidity": "98",
+              "DailyExtreme": {
+                "DailyHigh": {
+                  "TemperatureInfo": {
+                    "AirTemperature": "12.2"
+                  }
+                },
+                "DailyLow": {
+                  "TemperatureInfo": {
+                    "AirTemperature": "11.7"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "GeoInfo": {
+              "Coordinates": [
+                {
+                  "StationLatitude": "24.2328",
+                  "StationLongitude": "120.8965"
+                },
+                {
+                  "StationLatitude": "24.23105",
+                  "StationLongitude": "120.90475"
+                }
+              ]
+            },
+            "WeatherElement": {
+              "Weather": "陰",
+              "Now": {
+                "Precipitation": "1.5"
+              },
+              "AirTemperature": "16.6",
+              "RelativeHumidity": "96",
+              "DailyExtreme": {
+                "DailyHigh": {
+                  "TemperatureInfo": {
+                    "AirTemperature": "16.7"
+                  }
+                },
+                "DailyLow": {
+                  "TemperatureInfo": {
+                    "AirTemperature": "16.5"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "GeoInfo": {
+              "Coordinates": [
+                {
+                  "StationLatitude": "24.2336",
+                  "StationLongitude": "120.9704"
+                },
+                {
+                  "StationLatitude": "24.23192",
+                  "StationLongitude": "120.9786"
+                }
+              ]
+            },
+            "WeatherElement": {
+              "Weather": "陰有雨",
+              "Now": {
+                "Precipitation": "4.0"
+              },
+              "AirTemperature": "-99",
+              "RelativeHumidity": "-99",
+              "DailyExtreme": {
+                "DailyHigh": {
+                  "TemperatureInfo": {
+                    "AirTemperature": "-99"
+                  }
+                },
+                "DailyLow": {
+                  "TemperatureInfo": {
+                    "AirTemperature": "-99"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "GeoInfo": {
+              "Coordinates": [
+                {
+                  "StationLatitude": "24.1944",
+                  "StationLongitude": "120.9932"
+                },
+                {
+                  "StationLatitude": "24.192719",
+                  "StationLongitude": "121.001366"
+                }
+              ]
+            },
+            "WeatherElement": {
+              "Weather": "陰",
+              "Now": {
+                "Precipitation": "1.5"
+              },
+              "AirTemperature": "17.6",
+              "RelativeHumidity": "94",
+              "DailyExtreme": {
+                "DailyHigh": {
+                  "TemperatureInfo": {
+                    "AirTemperature": "17.7"
+                  }
+                },
+                "DailyLow": {
+                  "TemperatureInfo": {
+                    "AirTemperature": "17.5"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "GeoInfo": {
+              "Coordinates": [
+                {
+                  "StationLatitude": "24.2516",
+                  "StationLongitude": "121.1373"
+                },
+                {
+                  "StationLatitude": "24.2499",
+                  "StationLongitude": "121.1455"
+                }
+              ]
+            },
+            "WeatherElement": {
+              "Weather": "陰有雨",
+              "Now": {
+                "Precipitation": "5.5"
+              },
+              "AirTemperature": "-99",
+              "RelativeHumidity": "92",
+              "DailyExtreme": {
+                "DailyHigh": {
+                  "TemperatureInfo": {
+                    "AirTemperature": "-99"
+                  }
+                },
+                "DailyLow": {
+                  "TemperatureInfo": {
+                    "AirTemperature": "-99"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "GeoInfo": {
+              "Coordinates": [
+                {
+                  "StationLatitude": "24.390581",
+                  "StationLongitude": "121.263286"
+                },
+                {
+                  "StationLatitude": "24.388792",
+                  "StationLongitude": "121.268675"
+                }
+              ]
+            },
+            "WeatherElement": {
+              "Weather": "陰有雨",
+              "Now": {
+                "Precipitation": "7.0"
+              },
+              "AirTemperature": "6.4",
+              "RelativeHumidity": "100",
+              "DailyExtreme": {
+                "DailyHigh": {
+                  "TemperatureInfo": {
+                    "AirTemperature": "7.3"
+                  }
+                },
+                "DailyLow": {
+                  "TemperatureInfo": {
+                    "AirTemperature": "6.4"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "GeoInfo": {
+              "Coordinates": [
+                {
+                  "StationLatitude": "24.365503",
+                  "StationLongitude": "121.436489"
+                },
+                {
+                  "StationLatitude": "24.363714",
+                  "StationLongitude": "121.444667"
+                }
+              ]
+            },
+            "WeatherElement": {
+              "Weather": "陰有雨",
+              "Now": {
+                "Precipitation": "5.0"
+              },
+              "AirTemperature": "4.6",
+              "RelativeHumidity": "100",
+              "DailyExtreme": {
+                "DailyHigh": {
+                  "TemperatureInfo": {
+                    "AirTemperature": "5.0"
+                  }
+                },
+                "DailyLow": {
+                  "TemperatureInfo": {
+                    "AirTemperature": "4.5"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "GeoInfo": {
+              "Coordinates": [
+                {
+                  "StationLatitude": "24.250283",
+                  "StationLongitude": "120.895153"
+                },
+                {
+                  "StationLatitude": "24.248517",
+                  "StationLongitude": "120.903319"
+                }
+              ]
+            },
+            "WeatherElement": {
+              "Weather": "陰",
+              "Now": {
+                "Precipitation": "1.0"
+              },
+              "AirTemperature": "17.1",
+              "RelativeHumidity": "93",
+              "DailyExtreme": {
+                "DailyHigh": {
+                  "TemperatureInfo": {
+                    "AirTemperature": "17.3"
+                  }
+                },
+                "DailyLow": {
+                  "TemperatureInfo": {
+                    "AirTemperature": "16.8"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "GeoInfo": {
+              "Coordinates": [
+                {
+                  "StationLatitude": "24.3704",
+                  "StationLongitude": "121.365011"
+                },
+                {
+                  "StationLatitude": "24.368614",
+                  "StationLongitude": "121.373189"
+                }
+              ]
+            },
+            "WeatherElement": {
+              "Weather": "陰",
+              "Now": {
+                "Precipitation": "2.5"
+              },
+              "AirTemperature": "8.8",
+              "RelativeHumidity": "100",
+              "DailyExtreme": {
+                "DailyHigh": {
+                  "TemperatureInfo": {
+                    "AirTemperature": "9.2"
+                  }
+                },
+                "DailyLow": {
+                  "TemperatureInfo": {
+                    "AirTemperature": "8.7"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "GeoInfo": {
+              "Coordinates": [
+                {
+                  "StationLatitude": "24.354609",
+                  "StationLongitude": "121.300112"
+                },
+                {
+                  "StationLatitude": "24.352825",
+                  "StationLongitude": "121.308286"
+                }
+              ]
+            },
+            "WeatherElement": {
+              "Weather": "-99",
+              "Now": {
+                "Precipitation": "4.0"
+              },
+              "AirTemperature": "13.9",
+              "RelativeHumidity": "97",
+              "DailyExtreme": {
+                "DailyHigh": {
+                  "TemperatureInfo": {
+                    "AirTemperature": "14.1"
+                  }
+                },
+                "DailyLow": {
+                  "TemperatureInfo": {
+                    "AirTemperature": "13.8"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "GeoInfo": {
+              "Coordinates": [
+                {
+                  "StationLatitude": "24.275269",
+                  "StationLongitude": "120.939447"
+                },
+                {
+                  "StationLatitude": "24.273503",
+                  "StationLongitude": "120.947617"
+                }
+              ]
+            },
+            "WeatherElement": {
+              "Weather": "-99",
+              "Now": {
+                "Precipitation": "1.5"
+              },
+              "AirTemperature": "17.2",
+              "RelativeHumidity": "99",
+              "DailyExtreme": {
+                "DailyHigh": {
+                  "TemperatureInfo": {
+                    "AirTemperature": "17.3"
+                  }
+                },
+                "DailyLow": {
+                  "TemperatureInfo": {
+                    "AirTemperature": "17.2"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "GeoInfo": {
+              "Coordinates": [
+                {
+                  "StationLatitude": "24.245",
+                  "StationLongitude": "121.237667"
+                },
+                {
+                  "StationLatitude": "24.247522",
+                  "StationLongitude": "121.243669"
+                }
+              ]
+            },
+            "WeatherElement": {
+              "Weather": "-99",
+              "Now": {
+                "Precipitation": "6.5"
+              },
+              "AirTemperature": "11.2",
+              "RelativeHumidity": "100",
+              "DailyExtreme": {
+                "DailyHigh": {
+                  "TemperatureInfo": {
+                    "AirTemperature": "11.5"
+                  }
+                },
+                "DailyLow": {
+                  "TemperatureInfo": {
+                    "AirTemperature": "11.2"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "GeoInfo": {
+              "Coordinates": [
+                {
+                  "StationLatitude": "24.324225",
+                  "StationLongitude": "120.928649"
+                },
+                {
+                  "StationLatitude": "24.322458",
+                  "StationLongitude": "120.936819"
+                }
+              ]
+            },
+            "WeatherElement": {
+              "Weather": "-99",
+              "Now": {
+                "Precipitation": "0.5"
+              },
+              "AirTemperature": "17.5",
+              "RelativeHumidity": "97",
+              "DailyExtreme": {
+                "DailyHigh": {
+                  "TemperatureInfo": {
+                    "AirTemperature": "19.4"
+                  }
+                },
+                "DailyLow": {
+                  "TemperatureInfo": {
+                    "AirTemperature": "17.5"
+                  }
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

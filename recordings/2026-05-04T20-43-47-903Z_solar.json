@@ -1,0 +1,17 @@
+{
+  "forecast": {
+    "Locations": [
+      {
+        "sunRise": [
+          {
+            "Date": "2026-05-05",
+            "BeginCivilTwilightTime": "04:56",
+            "SunRiseTime": "05:20",
+            "SunSetTime": "18:28",
+            "EndCivilTwilightTime": "18:52"
+          }
+        ]
+      }
+    ]
+  }
+}
